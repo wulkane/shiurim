@@ -8,3 +8,5 @@ node_modules/
 # personal files, uploaded-state tracking
 *.docx
 data/uploaded.json
+*.url
+אמתואמונה_TrendsChart*.csv

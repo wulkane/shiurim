@@ -90,11 +90,12 @@ async function stats(req, env, url) {
       [r.day, r.lesson, r.platform, r.listeners, r.requests].join(','))].join('\n');
     return new Response('﻿' + csv, { headers: { ...headers, 'content-type': 'text/csv; charset=utf-8' } });
   }
-  const [byLesson, byDay] = await Promise.all([
+  const [byLesson, byDay, imported] = await Promise.all([
     env.DB.prepare('SELECT lesson, platform, COUNT(*) AS listeners FROM plays WHERE day >= ?1 GROUP BY lesson, platform').bind(since).all(),
     env.DB.prepare('SELECT day, COUNT(*) AS listeners FROM plays WHERE day >= ?1 GROUP BY day ORDER BY day').bind(since).all(),
+    env.DB.prepare('SELECT lesson, platform, plays, as_of FROM imported').all(),
   ]);
-  return Response.json({ byLesson: byLesson.results, byDay: byDay.results }, { headers });
+  return Response.json({ byLesson: byLesson.results, byDay: byDay.results, imported: imported.results }, { headers });
 }
 
 export default {

@@ -71,7 +71,7 @@ const lessonInfo = {};
   lessonInfo[l.id] = { title: l.title, pod: p.name, season: s.name })));
 
 const PERIODS = [[7, '7 ימים'], [30, '30 יום'], [90, '90 יום'], [365, 'שנה'], [0, 'הכול']];
-let days = 30, podFilter = '', data = null;
+let days = 0, podFilter = '', data = null;   // "all" by default: it is the only view that includes the Spotify import
 
 async function api(path) {
   const r = await fetch(API + path, { headers: { authorization: 'Bearer ' + key } });
@@ -103,8 +103,16 @@ function bars() {
 
 function render() {
   bars();
-  const rows = data.byLesson.filter(r => !podFilter || (lessonInfo[r.lesson] || {}).pod === podFilter);
+  // Totals exported by hand (Spotify) are since the show started, so they only fit the "all" view
+  const imp = data.imported || [];
+  const impDate = imp.length ? imp[0].as_of.split('-').reverse().join('.') : '';
+  const useImp = days === 0 && imp.length > 0;
+  const all = data.byLesson.concat(useImp ? imp.map(r => ({ lesson: r.lesson, platform: r.platform, listeners: r.plays })) : []);
+  const rows = all.filter(r => !podFilter || (lessonInfo[r.lesson] || {}).pod === podFilter);
   if (!rows.length) { $('main').innerHTML = '<p class="msg">עדיין אין נתונים לתקופה הזאת.</p>'; return; }
+  const impNote = useImp
+    ? `Spotify: סך כל ההשמעות וההורדות מתחילת הפודקאסט, כפי שיוצאו ב-${impDate}. הוא לא מתעדכן לבד, וצריך לייצא שוב מ-Spotify כדי לרענן.`
+    : (imp.length ? `נתוני Spotify (מיוצאים ב-${impDate}) מוצגים רק בתצוגת „הכול”.` : '');
 
   const per = {};            // lesson -> {total, plats:{name:n}}
   const plat = {};           // platform -> n
@@ -125,6 +133,7 @@ function render() {
   const maxD = Math.max(...series, 1);
 
   $('main').innerHTML = `
+    ${!useImp && imp.length ? `<p class="note" style="margin:0 0 14px">${esc(impNote)}</p>` : ''}
     <div class="cards">
       <div class="card"><div class="n">${total}</div><div class="l">האזנות בתקופה</div></div>
       <div class="card"><div class="n">${ranked.length}</div><div class="l">שיעורים שהושמעו</div></div>
@@ -143,7 +152,7 @@ function render() {
           <div class="track"><i style="width:${l.total / maxL * 100}%"></i></div></summary>
         <div class="plats">${Object.entries(l.plats).sort((a, b) => b[1] - a[1]).map(([p, n]) => `<span>${esc(p)}: ${n}</span>`).join('')}</div>
       </details>`).join('')}</div>
-    <p class="note">הנתונים כוללים רק האזנות שעברו דרך השרת שלנו: האתר ורוב אפליקציות הפודקאסטים. ההאזנות ב-Spotify וב-YouTube נמצאות בלוחות הנתונים שלהם, ולא כאן. האזנה נספרת פעם אחת לכל מאזין ביום לכל שיעור.</p>`;
+    <p class="note">האתר ורוב אפליקציות הפודקאסטים נספרים בשרת שלנו: האזנה אחת לכל מאזין ביום לכל שיעור.${impNote ? '<br>' + esc(impNote) : ''}<br>ההאזנות ב-YouTube נמצאות בלוח הנתונים של YouTube, ולא כאן.</p>`;
 }
 
 document.addEventListener('click', async e => {
