@@ -6,3 +6,9 @@ compatibility_date = "2026-10-01"
 [[r2_buckets]]
 binding = "MEDIA"
 bucket_name = "shiurim-media"
+
+# play counts, available to media.js as env.DB (schema in schema.sql)
+[[d1_databases]]
+binding = "DB"
+database_name = "shiurim-stats"
+database_id = "9982991a-566a-4952-b95b-2734604e3fbc"

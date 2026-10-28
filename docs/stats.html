@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>נתוני האזנה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f4ede1; --card:#fbf7f0; --soft:#f0e6d6; --ink:#2f2219; --muted:#76604b; --line:#e2d3bc; --accent:#8a5a2b; --gold:#a97b3c; --bar:#c99c5c; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1b1510; --card:#241c15; --soft:#2e241b; --ink:#f1e7d8; --muted:#b9a48a; --line:#3e3125; --accent:#d09a5c; --gold:#d2aa6a; --bar:#b98a4e; } }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:'Assistant', Arial, sans-serif; font-size:17px; background:var(--bg); color:var(--ink); line-height:1.5; padding-bottom:60px; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 16px; }
+  header { padding:36px 0 18px; }
+  h1 { font-family:'Noto Serif Hebrew', serif; font-weight:600; font-size:clamp(30px,6vw,44px); }
+  .sub { color:var(--muted); margin-top:4px; }
+  .bar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:18px 0; }
+  .chip, select, button { font:inherit; font-size:15px; font-weight:600; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; }
+  .chip.on { background:var(--accent); border-color:var(--accent); color:var(--card); }
+  .grow { flex:1; }
+  .cards { display:grid; gap:12px; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .card .n { font-family:'Noto Serif Hebrew', serif; font-weight:600; font-size:36px; line-height:1.1; }
+  .card .l { color:var(--muted); font-size:15px; margin-top:4px; }
+  .card .t { font-size:14px; margin-top:6px; color:var(--accent); font-weight:600; }
+  h2 { font-family:'Noto Serif Hebrew', serif; font-weight:600; font-size:24px; margin:34px 0 10px; }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:6px 18px; }
+  .row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 16px; padding:11px 0; border-top:1px solid var(--line); align-items:center; }
+  .row:first-child { border-top:0; }
+  .row .name { font-weight:600; min-width:0; }
+  .row .name small { display:block; font-weight:400; color:var(--muted); font-size:13.5px; }
+  .row .num { font-weight:700; font-variant-numeric:tabular-nums; }
+  .track { grid-column:1 / -1; height:6px; border-radius:3px; background:var(--soft); overflow:hidden; }
+  .track i { display:block; height:100%; background:var(--bar); border-radius:3px; }
+  .days { display:flex; align-items:flex-end; gap:2px; height:90px; padding:10px 0 4px; direction:ltr; }
+  .days i { flex:1; background:var(--bar); border-radius:2px 2px 0 0; min-height:2px; }
+  .note { color:var(--muted); font-size:14.5px; margin-top:26px; }
+  .msg { padding:28px; text-align:center; color:var(--muted); }
+  details.lesson-detail summary { cursor:pointer; list-style:none; }
+  details.lesson-detail summary::-webkit-details-marker { display:none; }
+  .plats { display:flex; gap:6px; flex-wrap:wrap; margin:6px 0 2px; }
+  .plats span { font-size:13px; background:var(--soft); border-radius:999px; padding:2px 10px; }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1>נתוני האזנה</h1>
+  <p class="sub">כמה האזנות היו לכל שיעור, ובאיזו אפליקציה. אנונימי: אין שמות ואין כתובות.</p>
+  <div class="bar" id="bar"></div>
+</header>
+<main class="wrap" id="main"><p class="msg">טוען…</p></main>
+
+<script src="data.js"></script>
+<script>
+const API = 'https://shiurim-media.wulkane.workers.dev';
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY_NAME = 'stats-key';
+
+// the key travels in the address after "#", which browsers never send to any server; it is kept
+// on this device so the bookmark can be shorter afterwards
+let key = new URLSearchParams(location.hash.slice(1)).get('key');
+try { if (key) localStorage.setItem(KEY_NAME, key); else key = localStorage.getItem(KEY_NAME); } catch (e) {}
+if (key) history.replaceState(null, '', location.pathname);
+
+const lessonInfo = {};
+(window.DATA || []).forEach(p => p.seasons.forEach(s => s.lessons.forEach(l =>
+  lessonInfo[l.id] = { title: l.title, pod: p.name, season: s.name })));
+
+const PERIODS = [[7, '7 ימים'], [30, '30 יום'], [90, '90 יום'], [365, 'שנה'], [0, 'הכול']];
+let days = 30, podFilter = '', data = null;
+
+async function api(path) {
+  const r = await fetch(API + path, { headers: { authorization: 'Bearer ' + key } });
+  if (r.status === 401) throw new Error('auth');
+  if (!r.ok) throw new Error('http ' + r.status);
+  return r;
+}
+
+async function load() {
+  $('main').innerHTML = '<p class="msg">טוען…</p>';
+  try { data = await (await api('/stats/data?days=' + days)).json(); }
+  catch (e) {
+    $('main').innerHTML = e.message === 'auth'
+      ? '<p class="msg">אין גישה. פתח את הקישור הסודי המלא שקיבלת, זה שנגמר ב-<b>#key=…</b></p>'
+      : '<p class="msg">לא הצלחתי לטעון את הנתונים. נסה שוב בעוד רגע.</p>';
+    return;
+  }
+  render();
+}
+
+function bars() {
+  const pods = [...new Set(Object.values(lessonInfo).map(l => l.pod))];
+  $('bar').innerHTML =
+    PERIODS.map(([d, t]) => `<button class="chip${d === days ? ' on' : ''}" data-days="${d}">${t}</button>`).join('') +
+    '<span class="grow"></span>' +
+    `<select id="pod" aria-label="פודקאסט"><option value="">כל הפודקאסטים</option>${pods.map(p => `<option${p === podFilter ? ' selected' : ''}>${esc(p)}</option>`).join('')}</select>` +
+    '<button id="csv">הורדת קובץ CSV</button>';
+}
+
+function render() {
+  bars();
+  const rows = data.byLesson.filter(r => !podFilter || (lessonInfo[r.lesson] || {}).pod === podFilter);
+  if (!rows.length) { $('main').innerHTML = '<p class="msg">עדיין אין נתונים לתקופה הזאת.</p>'; return; }
+
+  const per = {};            // lesson -> {total, plats:{name:n}}
+  const plat = {};           // platform -> n
+  rows.forEach(r => {
+    const l = per[r.lesson] ||= { total: 0, plats: {} };
+    l.total += r.listeners; l.plats[r.platform] = (l.plats[r.platform] || 0) + r.listeners;
+    plat[r.platform] = (plat[r.platform] || 0) + r.listeners;
+  });
+  const total = Object.values(per).reduce((n, l) => n + l.total, 0);
+  const ranked = Object.entries(per).sort((a, b) => b[1].total - a[1].total);
+  const top = ranked[0], topPlat = Object.entries(plat).sort((a, b) => b[1] - a[1])[0];
+  const name = id => (lessonInfo[id] || { title: id }).title;
+  const maxL = ranked[0][1].total, maxP = topPlat[1];
+
+  const dayMap = Object.fromEntries(data.byDay.map(d => [d.day, d.listeners]));
+  const span = days || 90, series = [];
+  for (let i = span - 1; i >= 0; i--) series.push(dayMap[new Date(Date.now() - i * 864e5).toISOString().slice(0, 10)] || 0);
+  const maxD = Math.max(...series, 1);
+
+  $('main').innerHTML = `
+    <div class="cards">
+      <div class="card"><div class="n">${total}</div><div class="l">האזנות בתקופה</div></div>
+      <div class="card"><div class="n">${ranked.length}</div><div class="l">שיעורים שהושמעו</div></div>
+      <div class="card"><div class="n">${top[1].total}</div><div class="l">השיעור המוביל</div><div class="t">${esc(name(top[0]))}</div></div>
+      <div class="card"><div class="n">${topPlat[1]}</div><div class="l">האפליקציה המובילה</div><div class="t">${esc(topPlat[0])}</div></div>
+    </div>
+    <h2>לפי יום</h2>
+    <div class="panel"><div class="days">${series.map(n => `<i style="height:${Math.max(n / maxD * 100, 2)}%" title="${n}"></i>`).join('')}</div></div>
+    <h2>לפי אפליקציה</h2>
+    <div class="panel">${Object.entries(plat).sort((a, b) => b[1] - a[1]).map(([p, n]) =>
+      `<div class="row"><div class="name">${esc(p)}</div><div class="num">${n}</div><div class="track"><i style="width:${n / maxP * 100}%"></i></div></div>`).join('')}</div>
+    <h2>לפי שיעור</h2>
+    <div class="panel">${ranked.map(([id, l]) => `
+      <details class="lesson-detail row" style="display:block">
+        <summary class="row" style="border:0;padding:0"><div class="name">${esc(name(id))}<small>${esc((lessonInfo[id] || {}).season || (lessonInfo[id] || {}).pod || '')}</small></div><div class="num">${l.total}</div>
+          <div class="track"><i style="width:${l.total / maxL * 100}%"></i></div></summary>
+        <div class="plats">${Object.entries(l.plats).sort((a, b) => b[1] - a[1]).map(([p, n]) => `<span>${esc(p)}: ${n}</span>`).join('')}</div>
+      </details>`).join('')}</div>
+    <p class="note">הנתונים כוללים רק האזנות שעברו דרך השרת שלנו: האתר ורוב אפליקציות הפודקאסטים. ההאזנות ב-Spotify וב-YouTube נמצאות בלוחות הנתונים שלהם, ולא כאן. האזנה נספרת פעם אחת לכל מאזין ביום לכל שיעור.</p>`;
+}
+
+document.addEventListener('click', async e => {
+  const d = e.target.closest('[data-days]');
+  if (d) { days = +d.dataset.days; return load(); }
+  if (e.target.id === 'csv') {
+    try {
+      const blob = await (await api('/stats/export.csv?days=' + days)).blob();
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'listening.csv'; a.click();
+    } catch (err) { alert('ההורדה נכשלה'); }
+  }
+});
+document.addEventListener('change', e => { if (e.target.id === 'pod') { podFilter = e.target.value; render(); } });
+
+if (key) load(); else { bars(); $('main').innerHTML = '<p class="msg">אין גישה. פתח את הקישור הסודי המלא שקיבלת.</p>'; }
+</script>
+</body>
+</html>
