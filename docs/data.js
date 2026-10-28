@@ -5,7 +5,7 @@ window.DATA = [
   "icon": 0,
   "about": "עיון בפרשת השבוע מתוך פשט הפסוקים, דברי חז\"ל והמפרשים, והמסרים העולים מהם לחיינו",
   "links": {
-   "spotify": null,
+   "spotify": "https://open.spotify.com/show/7KKnHKn48V0iwPmTfMdcry",
    "apple": null,
    "youtube": null,
    "rss": "https://wulkane.github.io/shiurim/feeds/parasha.xml"

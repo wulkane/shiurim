@@ -13,7 +13,7 @@ PODCASTS = [
     {
         'name': 'פשט ועומק בפרשת השבוע', 'key': 'parasha', 'icon': 0,
         'about': 'עיון בפרשת השבוע מתוך פשט הפסוקים, דברי חז"ל והמפרשים, והמסרים העולים מהם לחיינו',
-        'links': {'spotify': None, 'apple': None, 'youtube': None},
+        'links': {'spotify': 'https://open.spotify.com/show/7KKnHKn48V0iwPmTfMdcry', 'apple': None, 'youtube': None},
     },
     {
         'name': 'אמת ואמונה', 'key': 'emuna', 'icon': 1,
