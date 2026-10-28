@@ -8,7 +8,7 @@ Run: python scripts/build_feeds.py
 """
 import json, sys
 from datetime import datetime, timezone
-from email.utils import format_datetime
+from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -29,7 +29,14 @@ def seconds(dur):
 
 
 def pub_date(row):
+    """The date apps sort by. A lesson can carry a different 'תאריך בפיד' (feed date) so it is placed
+    where it belongs in the list, e.g. Bereshit and Noach before Lech Lecha; the real date stays on the site."""
     old = SPOTIFY.get(row['כותרת מקורית'].strip())
+    feed_date = row.get('תאריך בפיד', '').strip()
+    if feed_date:
+        day = datetime.strptime(feed_date, '%d/%m/%Y')
+        t = parsedate_to_datetime(old['pubDate']) if old else None   # keep the original time of day
+        return format_datetime(day.replace(hour=t.hour if t else 20, minute=t.minute if t else 0, second=t.second if t else 0, tzinfo=timezone.utc), usegmt=True)
     if old:
         return old['pubDate']
     d = datetime.strptime(row['תאריך'], '%d/%m/%Y').replace(hour=20, tzinfo=timezone.utc)
