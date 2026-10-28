@@ -39,10 +39,23 @@
   .days i { flex:1; background:var(--bar); border-radius:2px 2px 0 0; min-height:2px; }
   .note { color:var(--muted); font-size:14.5px; margin-top:26px; }
   .msg { padding:28px; text-align:center; color:var(--muted); }
-  details.lesson-detail summary { cursor:pointer; list-style:none; }
-  details.lesson-detail summary::-webkit-details-marker { display:none; }
-  .plats { display:flex; gap:6px; flex-wrap:wrap; margin:6px 0 2px; }
-  .plats span { font-size:13px; background:var(--soft); border-radius:999px; padding:2px 10px; }
+  [hidden] { display:none !important; }
+  .find { width:100%; margin-bottom:22px; font:inherit; font-size:16px; padding:11px 16px; border-radius:12px; border:1px solid var(--line); background:var(--card); color:var(--ink); }
+  .plats { display:flex; gap:6px; flex-wrap:wrap; margin-top:5px; }
+  .plats span { font-size:13px; font-weight:400; background:var(--soft); border-radius:999px; padding:1px 10px; color:var(--muted); }
+  .pod-title { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin:34px 0 10px; padding-bottom:8px; border-bottom:2px solid var(--line); }
+  .pod-title h3 { font-family:'Noto Serif Hebrew', serif; font-weight:600; font-size:26px; }
+  .pod-title span { color:var(--muted); font-weight:600; }
+  details.folder { background:var(--card); border:1px solid var(--line); border-radius:14px; margin-top:10px; overflow:hidden; }
+  details.folder > summary { list-style:none; cursor:pointer; padding:14px 18px; display:flex; align-items:baseline; gap:12px; }
+  details.folder > summary::-webkit-details-marker { display:none; }
+  details.folder > summary::before { content:'+'; color:var(--gold); font-size:22px; line-height:1; width:14px; transition:transform .2s; }
+  details.folder[open] > summary::before { transform:rotate(45deg); }
+  .fname { font-family:'Noto Serif Hebrew', serif; font-weight:600; font-size:20px; }
+  .fmeta { color:var(--muted); font-size:14px; }
+  .fnum { margin-inline-start:auto; font-weight:700; font-size:18px; font-variant-numeric:tabular-nums; }
+  .flist { padding:0 18px 6px; }
+  .flist .row:first-child { border-top:1px solid var(--line); }
 </style>
 </head>
 <body>
@@ -50,6 +63,7 @@
   <h1>נתוני האזנה</h1>
   <p class="sub">כמה האזנות היו לכל שיעור, ובאיזו אפליקציה. אנונימי: אין שמות ואין כתובות.</p>
   <div class="bar" id="bar"></div>
+  <input id="find" class="find" type="search" placeholder="חיפוש שיעור לפי שם" aria-label="חיפוש שיעור">
 </header>
 <main class="wrap" id="main"><p class="msg">טוען…</p></main>
 
@@ -71,6 +85,9 @@ const lessonInfo = {};
   lessonInfo[l.id] = { title: l.title, pod: p.name, season: s.name })));
 
 const PERIODS = [[7, '7 ימים'], [30, '30 יום'], [90, '90 יום'], [365, 'שנה'], [0, 'הכול']];
+const plain = s => s.toLowerCase().replace(/["'׳״]/g, '');   // chazal = חז"ל = חז״ל
+let sortBy = 'catalog';               // 'catalog' (in order of the parashot) or 'plays'
+const openKeys = new Set();           // folders left open across redraws
 let days = 0, podFilter = '', data = null;   // "all" by default: it is the only view that includes the Spotify import
 
 async function api(path) {
@@ -98,7 +115,48 @@ function bars() {
     PERIODS.map(([d, t]) => `<button class="chip${d === days ? ' on' : ''}" data-days="${d}">${t}</button>`).join('') +
     '<span class="grow"></span>' +
     `<select id="pod" aria-label="פודקאסט"><option value="">כל הפודקאסטים</option>${pods.map(p => `<option${p === podFilter ? ' selected' : ''}>${esc(p)}</option>`).join('')}</select>` +
+    `<button id="sort">מיון: ${sortBy === 'catalog' ? 'לפי סדר הפרשות' : 'לפי האזנות'}</button>` +
+    '<button id="expand">פתיחה/סגירה של הכול</button>' +
     '<button id="csv">הורדת קובץ CSV</button>';
+}
+
+// Lessons grouped like the site: podcast -> topic (season) -> lesson, each level with its total.
+// A podcast with a single unnamed season (the holidays) lists its lessons directly.
+function folders(per) {
+  const sum = list => list.reduce((n, x) => n + x.total, 0);
+  const chips = l => Object.entries(l.plats).sort((a, b) => b[1] - a[1]).map(([p, n]) => `<span>${esc(p)}: ${n}</span>`).join('');
+  const lessonRow = (l, max) => `<div class="row lesson" data-text="${esc(plain(l.title))}">
+      <div class="name">${esc(l.title)}<div class="plats">${chips(l)}</div></div><div class="num">${l.total}</div>
+      <div class="track"><i style="width:${l.total / max * 100}%"></i></div></div>`;
+  return (window.DATA || []).filter(p => !podFilter || p.name === podFilter).map(p => {
+    const seasons = p.seasons.map(s => {
+      const lessons = s.lessons.filter(l => per[l.id]).map(l => ({ id: l.id, title: l.title, ...per[l.id] }));
+      if (sortBy === 'plays') lessons.sort((a, b) => b.total - a.total);
+      return { name: s.name, lessons, total: sum(lessons), count: s.lessons.length };
+    }).filter(s => s.lessons.length);
+    if (!seasons.length) return '';
+    const max = Math.max(...seasons.flatMap(s => s.lessons.map(l => l.total)));
+    const body = seasons.length === 1 && !seasons[0].name
+      ? `<div class="panel">${seasons[0].lessons.map(l => lessonRow(l, max)).join('')}</div>`
+      : seasons.map(s => {
+          const k = p.name + '|' + s.name;
+          return `<details class="folder" data-key="${esc(k)}"${openKeys.has(k) ? ' open' : ''}>
+            <summary><span class="fname">${esc(s.name)}</span><span class="fmeta">${s.lessons.length} מתוך ${s.count} שיעורים</span><span class="fnum">${s.total}</span></summary>
+            <div class="flist">${s.lessons.map(l => lessonRow(l, max)).join('')}</div></details>`;
+        }).join('');
+    return `<section class="podgroup"><div class="pod-title"><h3>${esc(p.name)}</h3><span>${sum(seasons)} האזנות</span></div>${body}</section>`;
+  }).join('');
+}
+
+// quick filter over the lessons already on the page; folders with a match open by themselves
+function applyFind() {
+  const q = plain($('find').value.trim());
+  document.querySelectorAll('.lesson').forEach(r => r.hidden = !!q && !r.dataset.text.includes(q));
+  document.querySelectorAll('.folder').forEach(d => {
+    const hit = [...d.querySelectorAll('.lesson')].some(r => !r.hidden);
+    d.hidden = !hit; if (q && hit) d.open = true;
+  });
+  document.querySelectorAll('.podgroup').forEach(g => g.hidden = ![...g.querySelectorAll('.lesson')].some(r => !r.hidden));
 }
 
 function render() {
@@ -125,7 +183,7 @@ function render() {
   const ranked = Object.entries(per).sort((a, b) => b[1].total - a[1].total);
   const top = ranked[0], topPlat = Object.entries(plat).sort((a, b) => b[1] - a[1])[0];
   const name = id => (lessonInfo[id] || { title: id }).title;
-  const maxL = ranked[0][1].total, maxP = topPlat[1];
+  const maxP = topPlat[1];
 
   const dayMap = Object.fromEntries(data.byDay.map(d => [d.day, d.listeners]));
   const span = days || 90, series = [];
@@ -145,19 +203,22 @@ function render() {
     <h2>לפי אפליקציה</h2>
     <div class="panel">${Object.entries(plat).sort((a, b) => b[1] - a[1]).map(([p, n]) =>
       `<div class="row"><div class="name">${esc(p)}</div><div class="num">${n}</div><div class="track"><i style="width:${n / maxP * 100}%"></i></div></div>`).join('')}</div>
-    <h2>לפי שיעור</h2>
-    <div class="panel">${ranked.map(([id, l]) => `
-      <details class="lesson-detail row" style="display:block">
-        <summary class="row" style="border:0;padding:0"><div class="name">${esc(name(id))}<small>${esc((lessonInfo[id] || {}).season || (lessonInfo[id] || {}).pod || '')}</small></div><div class="num">${l.total}</div>
-          <div class="track"><i style="width:${l.total / maxL * 100}%"></i></div></summary>
-        <div class="plats">${Object.entries(l.plats).sort((a, b) => b[1] - a[1]).map(([p, n]) => `<span>${esc(p)}: ${n}</span>`).join('')}</div>
-      </details>`).join('')}</div>
+    <h2>לפי פודקאסט ונושא</h2>
+    ${folders(per)}
     <p class="note">האתר ורוב אפליקציות הפודקאסטים נספרים בשרת שלנו: האזנה אחת לכל מאזין ביום לכל שיעור.${impNote ? '<br>' + esc(impNote) : ''}<br>ההאזנות ב-YouTube נמצאות בלוח הנתונים של YouTube, ולא כאן.</p>`;
+  applyFind();
 }
 
 document.addEventListener('click', async e => {
   const d = e.target.closest('[data-days]');
   if (d) { days = +d.dataset.days; return load(); }
+  if (e.target.id === 'sort') { sortBy = sortBy === 'catalog' ? 'plays' : 'catalog'; return render(); }
+  if (e.target.id === 'expand') {
+    const all = [...document.querySelectorAll('.folder:not([hidden])')];
+    const open = all.some(f => !f.open);
+    all.forEach(f => f.open = open);
+    return;
+  }
   if (e.target.id === 'csv') {
     try {
       const blob = await (await api('/stats/export.csv?days=' + days)).blob();
@@ -166,6 +227,11 @@ document.addEventListener('click', async e => {
   }
 });
 document.addEventListener('change', e => { if (e.target.id === 'pod') { podFilter = e.target.value; render(); } });
+document.addEventListener('toggle', e => {          // "toggle" doesn't bubble, so listen while capturing
+  const f = e.target.closest && e.target.closest('.folder');
+  if (f) f.open ? openKeys.add(f.dataset.key) : openKeys.delete(f.dataset.key);
+}, true);
+$('find').addEventListener('input', applyFind);
 
 if (key) load(); else { bars(); $('main').innerHTML = '<p class="msg">אין גישה. פתח את הקישור הסודי המלא שקיבלת.</p>'; }
 </script>
