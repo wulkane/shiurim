@@ -631,7 +631,7 @@ window.DATA = [
    "בין המצרים"
   ],
   "links": {
-   "spotify": null,
+   "spotify": "https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6",
    "apple": null,
    "youtube": null,
    "rss": "https://wulkane.github.io/shiurim/feeds/moadim.xml"
