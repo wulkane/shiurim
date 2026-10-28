@@ -2,7 +2,9 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[מועדי ישראל]]></title>
-    <description><![CDATA[מהותם של חגי ישראל ומועדיו לאור פסוקי התורה ודברי חז"ל]]></description>
+    <description><![CDATA[מהותם של חגי ישראל ומועדיו לאור פסוקי התורה ודברי חז"ל
+
+כל השיעורים מסודרים לפי נושאים וסדר הפרשות באתר: https://wulkane.github.io/shiurim/]]></description>
     <link>https://wulkane.github.io/shiurim/#p-moadim</link>
     <atom:link href="https://wulkane.github.io/shiurim/feeds/moadim.xml" rel="self" type="application/rss+xml"/>
     <language>he</language>

@@ -2,7 +2,9 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[אמת ואמונה]]></title>
-    <description><![CDATA[עיונים ומחשבות על נושאי יסוד באמונה היהודית]]></description>
+    <description><![CDATA[עיונים ומחשבות על נושאי יסוד באמונה היהודית
+
+כל השיעורים מסודרים לפי נושאים וסדר הפרשות באתר: https://wulkane.github.io/shiurim/]]></description>
     <link>https://wulkane.github.io/shiurim/#p-emuna</link>
     <atom:link href="https://wulkane.github.io/shiurim/feeds/emuna.xml" rel="self" type="application/rss+xml"/>
     <language>he</language>

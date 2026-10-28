@@ -2,7 +2,9 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[פשט ועומק בפרשת השבוע]]></title>
-    <description><![CDATA[עיון בפרשת השבוע מתוך פשט הפסוקים, דברי חז"ל והמפרשים, והמסרים העולים מהם לחיינו]]></description>
+    <description><![CDATA[עיון בפרשת השבוע מתוך פשט הפסוקים, דברי חז"ל והמפרשים, והמסרים העולים מהם לחיינו
+
+כל השיעורים מסודרים לפי נושאים וסדר הפרשות באתר: https://wulkane.github.io/shiurim/]]></description>
     <link>https://wulkane.github.io/shiurim/#p-parasha</link>
     <atom:link href="https://wulkane.github.io/shiurim/feeds/parasha.xml" rel="self" type="application/rss+xml"/>
     <language>he</language>

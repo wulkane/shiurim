@@ -78,7 +78,7 @@ def build(pod, rows, cfg):
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{cdata(pod['name'])}</title>
-    <description>{cdata(pod['about'])}</description>
+    <description>{cdata(pod['about'] + chr(10) + chr(10) + 'כל השיעורים מסודרים לפי נושאים וסדר הפרשות באתר: ' + site)}</description>
     <link>{site}#p-{pod['key']}</link>
     <atom:link href="{feed_url}" rel="self" type="application/rss+xml"/>
     <language>he</language>
