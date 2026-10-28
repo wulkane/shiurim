@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>שיעורי תורה · אלעד וולקן</title>
+<meta name="description" content="שיעורים וסדרות בנושאים שונים בתורה ובאמונת ישראל. ניתן להאזין באתר או באחת מאפליקציות הפודקאסטים.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;500;600&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f4ede1; --card:#fbf7f0; --soft:#f0e6d6; --ink:#2f2219; --muted:#76604b; --line:#e2d3bc;
+    --accent:#8a5a2b; --gold:#a97b3c; --hl:#f3e3c6;
+    --hero:#2f2219; --hero2:#46321f; --hero-ink:#f5ecdc; --hero-muted:#d6c3a5;
+    --serif:'Noto Serif Hebrew', 'David', serif; --sans:'Assistant', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#1b1510; --card:#241c15; --soft:#2e241b; --ink:#f1e7d8; --muted:#b9a48a; --line:#3e3125;
+      --accent:#d09a5c; --gold:#d2aa6a; --hl:#3a2c1d; --hero:#120d09; --hero2:#2a1f15;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#1b1510; --card:#241c15; --soft:#2e241b; --ink:#f1e7d8; --muted:#b9a48a; --line:#3e3125;
+    --accent:#d09a5c; --gold:#d2aa6a; --hl:#3a2c1d; --hero:#120d09; --hero2:#2a1f15;
+  }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font-family:var(--sans); font-size:17px; background:var(--bg); color:var(--ink); line-height:1.6; padding-bottom:120px; }
+  a { color:inherit; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 16px; }
+  :focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+
+  /* hero */
+  header.hero { position:relative; overflow:hidden; color:var(--hero-ink);
+    background:radial-gradient(120% 90% at 85% 0%, var(--hero2) 0%, var(--hero) 60%); padding:64px 0 120px; }
+  header.hero .art { position:absolute; inset-inline-end:-40px; top:30px; width:min(46vw,440px); color:var(--gold); opacity:.22; pointer-events:none; }
+  header.hero .wrap { position:relative; }
+  .eyebrow { display:flex; align-items:center; gap:12px; color:var(--gold); font-family:var(--serif); font-weight:500; font-size:clamp(21px,3.4vw,28px); letter-spacing:.03em; margin:0 0 22px; }
+  .eyebrow::before { content:''; width:36px; height:1px; background:currentColor; }
+  h1 { font-family:var(--serif); font-weight:600; font-size:clamp(46px,9vw,84px); line-height:1.02; margin:0 0 10px; letter-spacing:-.01em; }
+  .tag { font-size:clamp(17px,2.4vw,20px); color:var(--hero-muted); max-width:46ch; margin:0 0 30px; }
+  .search { width:100%; max-width:560px; font:inherit; font-size:17px; padding:14px 18px; border-radius:12px; border:1px solid rgba(214,195,165,.35); background:rgba(245,236,220,.08); color:var(--hero-ink); }
+  .search::placeholder { color:var(--hero-muted); opacity:.8; }
+  .search:focus { outline:none; border-color:var(--gold); background:rgba(245,236,220,.12); }
+
+  /* topic cards */
+  .topics { display:grid; gap:16px; grid-template-columns:minmax(0,1fr); margin-top:-78px; position:relative; }
+  @media (min-width:760px) { .topics { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+  a.topic { display:flex; flex-direction:column; gap:8px; text-decoration:none; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 22px 18px; box-shadow:0 10px 30px rgba(47,34,25,.10); transition:transform .15s, box-shadow .15s, border-color .15s; }
+  a.topic:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(47,34,25,.16); border-color:var(--gold); }
+  .topic svg { width:44px; height:44px; color:var(--accent); }
+  .topic h3 { font-family:var(--serif); font-weight:600; font-size:22px; line-height:1.2; margin:4px 0 0; }
+  .topic p { margin:0; color:var(--muted); font-size:15.5px; }
+  .topic .subs { font-size:14px; color:var(--ink); opacity:.85; }
+  .topic .more { margin-top:auto; padding-top:8px; font-weight:700; font-size:15px; color:var(--accent); }
+
+  /* podcast sections */
+  section.pod { margin:64px 0 0; scroll-margin-top:16px; }
+  .orn { display:flex; align-items:center; gap:14px; color:var(--gold); margin-bottom:14px; }
+  .orn::before, .orn::after { content:''; height:1px; background:var(--line); flex:1; }
+  .orn span { font-size:11px; transform:rotate(45deg); width:8px; height:8px; border:1px solid currentColor; }
+  .pod-head { text-align:center; max-width:640px; margin:0 auto 24px; }
+  .pod-head h2 { font-family:var(--serif); font-weight:600; font-size:clamp(30px,5vw,42px); line-height:1.15; margin:0; }
+  .pod-head p { margin:8px 0 18px; color:var(--muted); }
+  .platforms { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .plat { display:inline-flex; align-items:center; gap:8px; text-decoration:none; font:inherit; font-weight:600; font-size:15px; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; }
+  a.plat:hover, button.plat:hover { border-color:var(--gold); }
+  .plat .dot { width:9px; height:9px; border-radius:50%; flex:none; }
+  .plat[aria-disabled="true"] { opacity:.55; cursor:default; }
+  .plat small { font-weight:400; color:var(--muted); font-size:13px; }
+
+  details.season { background:var(--card); border:1px solid var(--line); border-radius:14px; margin-top:10px; overflow:hidden; }
+  details.season > summary { list-style:none; cursor:pointer; padding:16px 20px; display:flex; align-items:baseline; gap:12px; }
+  details.season > summary::-webkit-details-marker { display:none; }
+  details.season > summary .sn { font-family:var(--serif); font-weight:500; font-size:21px; }
+  details.season > summary .count { color:var(--muted); font-size:14px; }
+  details.season > summary::after { content:'+'; margin-inline-start:auto; font-size:24px; line-height:1; color:var(--gold); transition:transform .2s; }
+  details.season[open] > summary::after { transform:rotate(45deg); }
+  .season-about { margin:-4px 20px 10px; color:var(--muted); font-size:15.5px; }
+
+  ol.lessons { list-style:none; margin:0; padding:0 10px 10px; }
+  li.lesson { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:14px; align-items:start; padding:14px 10px; border-top:1px solid var(--line); border-radius:10px; }
+  li.lesson.hit { background:var(--hl); }
+  .play { width:42px; height:42px; border-radius:50%; border:1.5px solid var(--accent); background:transparent; color:var(--accent); cursor:pointer; display:grid; place-items:center; flex:none; transition:background .15s, color .15s; }
+  .play:hover, .play.on { background:var(--accent); color:var(--card); }
+  .play svg { width:16px; height:16px; }
+  .lt { font-weight:700; font-size:17.5px; margin:0; line-height:1.4; }
+  .ld { margin:3px 0 0; color:var(--muted); font-size:15.5px; }
+  .lm { margin-top:6px; font-size:13.5px; color:var(--muted); display:flex; gap:14px; flex-wrap:wrap; }
+  .share { border:1px solid var(--line); background:transparent; color:var(--ink); border-radius:999px; padding:6px 12px; font:inherit; font-size:14px; cursor:pointer; }
+  .share:hover { border-color:var(--gold); }
+  .empty { padding:30px; text-align:center; color:var(--muted); }
+
+  .player { position:fixed; inset:auto 0 0 0; background:var(--hero); color:var(--hero-ink); padding:10px 16px calc(10px + env(safe-area-inset-bottom)); display:none; box-shadow:0 -8px 24px rgba(0,0,0,.18); z-index:4; }
+  .player.show { display:block; }
+  .player .in { max-width:960px; margin:0 auto; display:grid; gap:6px; }
+  .player .row { display:flex; align-items:center; gap:10px; }
+  .player .now { font-weight:700; font-size:15px; flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .player audio { width:100%; height:40px; }
+  .speed, .close { font:inherit; font-size:14px; font-weight:700; border:1px solid rgba(214,195,165,.4); background:transparent; color:var(--hero-ink); border-radius:999px; padding:4px 12px; cursor:pointer; }
+  .toast { position:fixed; top:16px; inset-inline:0; margin:auto; width:max-content; max-width:90vw; background:var(--hero); color:var(--hero-ink); padding:10px 18px; border-radius:999px; font-size:15px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:5; }
+  .toast.show { opacity:1; }
+  footer { text-align:center; color:var(--muted); font-size:15px; padding:56px 0 24px; }
+  footer .orn { max-width:320px; margin:0 auto 14px; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg class="art" viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+    <path d="M100 26c-18-12-48-16-82-12v104c34-4 64 0 82 12 18-12 48-16 82-12V14c-34-4-64 0-82 12z"/>
+    <path d="M100 26v104"/>
+    <path d="M30 34c22-2 42 1 58 8M30 48c22-2 42 1 58 8M30 62c22-2 42 1 58 8M30 76c22-2 42 1 58 8M30 90c22-2 42 1 58 8M30 104c22-2 42 1 58 8" opacity=".7"/>
+    <path d="M170 34c-22-2-42 1-58 8M170 48c-22-2-42 1-58 8M170 62c-22-2-42 1-58 8M170 76c-22-2-42 1-58 8M170 90c-22-2-42 1-58 8M170 104c-22-2-42 1-58 8" opacity=".7"/>
+  </svg>
+  <div class="wrap">
+    <h1>שיעורי תורה</h1>
+    <div class="eyebrow">אלעד וולקן</div>
+    <p class="tag">שיעורים וסדרות בנושאים שונים בתורה ובאמונת ישראל. ניתן להאזין באתר או באחת מאפליקציות הפודקאסטים.</p>
+    <input class="search" id="q" type="search" placeholder="חיפוש שיעור: פרשה, חג או נושא" aria-label="חיפוש שיעור">
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="topics" id="topics" aria-label="הסדרות"></nav>
+  <div id="main"></div>
+</main>
+<footer class="wrap"><div class="orn"><span></span></div>כל השיעורים זמינים בחינם · מוזמנים לשתף</footer>
+
+<div class="player" id="player" aria-label="נגן">
+  <div class="in">
+    <div class="row">
+      <div class="now" id="now"></div>
+      <button class="speed" id="speed" aria-label="מהירות השמעה">×1</button>
+      <button class="close" id="close" aria-label="סגירת הנגן">✕</button>
+    </div>
+    <audio id="audio" controls preload="none"></audio>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="data.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const PLAT = [
+  ['spotify','ספוטיפיי','#1db954'],
+  ['apple','אפל פודקאסטס','#9b4dd8'],
+  ['youtube','יוטיוב','#e62117'],
+];
+// line icons for the topic cards, in podcast order
+const ICONS = [
+  // open book
+  '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M24 13c-5-3.5-11-4.5-18-3.5v27c7-1 13 0 18 3.5 5-3.5 11-4.5 18-3.5v-27c-7-1-13 0-18 3.5z"/><path d="M24 13v27M10 16c4-.4 7.5.2 10 1.4M10 22c4-.4 7.5.2 10 1.4M10 28c4-.4 7.5.2 10 1.4M38 16c-4-.4-7.5.2-10 1.4M38 22c-4-.4-7.5.2-10 1.4M38 28c-4-.4-7.5.2-10 1.4"/></svg>',
+  // stack of books
+  '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="33" width="32" height="7" rx="1.5"/><rect x="11" y="25" width="28" height="8" rx="1.5"/><rect x="9" y="17" width="27" height="8" rx="1.5"/><path d="M14 33v7M34 25v8M14 17v8"/><path d="M27 8l8 9" /></svg>',
+  // menorah
+  '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M24 15v24M17 40h14"/><path d="M24 33C11 33 10 24 10 16M24 29C15.5 29 15 22 15 16M24 25C20 25 19.5 20 19.5 16M24 33C37 33 38 24 38 16M24 29C32.5 29 33 22 33 16M24 25C28 25 28.5 20 28.5 16"/><path d="M10 11.5v1.5M15 11.5v1.5M19.5 11.5v1.5M24 10.5v1.5M28.5 11.5v1.5M33 11.5v1.5M38 11.5v1.5" stroke-width="2.4"/></svg>',
+];
+const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>';
+const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg>';
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function mins(d){ const p = (d||'').split(':').map(Number); if (p.length < 2) return ''; const m = p.length === 3 ? p[0]*60 + p[1] : p[0]; return m + ' דק׳'; }
+
+const lessons = {};
+function render(){
+  const main = $('main'), topics = $('topics');
+  DATA.forEach((pod, pi) => {
+    const total = pod.seasons.reduce((n,s) => n + s.lessons.length, 0);
+    const subs = pod.topics || pod.seasons.map(s => s.name).filter(Boolean);
+    topics.insertAdjacentHTML('beforeend', `<a class="topic" href="#p-${pod.key}">${ICONS[pi % ICONS.length]}
+      <h3>${esc(pod.name)}</h3><p>${esc(pod.about)}</p>
+      <div class="subs">${subs.map(esc).join(' · ')}</div>
+      <div class="more">${total} שיעורים ←</div></a>`);
+    const links = PLAT.map(([k,label,color]) => pod.links[k]
+      ? `<a class="plat" href="${esc(pod.links[k])}" target="_blank" rel="noopener"><span class="dot" style="background:${color}"></span>${label}</a>`
+      : `<span class="plat" aria-disabled="true"><span class="dot" style="background:${color}"></span>${label} <small>בקרוב</small></span>`).join('')
+      + (pod.links.rss ? `<button class="plat" data-rss="${esc(pod.links.rss)}"><span class="dot" style="background:var(--gold)"></span>אפליקציה אחרת <small>העתקת קישור</small></button>` : '');
+    const seasons = pod.seasons.map(s => {
+      const items = s.lessons.map(l => {
+        lessons[l.id] = {...l, pod: pod.name};
+        return `<li class="lesson" id="${l.id}" data-text="${esc(norm([l.title, l.desc, s.name, pod.name].join(' ')))}">
+          <button class="play" data-play="${l.id}" aria-label="השמעה: ${esc(l.title)}">${ICON_PLAY}</button>
+          <div><p class="lt">${esc(l.title)}</p>${l.desc ? `<p class="ld">${esc(l.desc)}</p>` : ''}
+            <div class="lm"><span>${mins(l.dur)}</span><span>${esc(l.date)}</span></div></div>
+          <button class="share" data-share="${l.id}" aria-label="שיתוף השיעור">שיתוף</button></li>`;
+      }).join('');
+      return `<details class="season"${pod.seasons.length === 1 ? ' open' : ''}>
+        <summary><span class="sn">${esc(s.name || 'כל השיעורים')}</span><span class="count">${s.lessons.length} שיעורים</span></summary>
+        ${s.about ? `<p class="season-about">${esc(s.about)}</p>` : ''}<ol class="lessons">${items}</ol></details>`;
+    }).join('');
+    main.insertAdjacentHTML('beforeend', `<section class="pod" id="p-${pod.key}">
+      <div class="orn"><span></span></div>
+      <div class="pod-head"><h2>${esc(pod.name)}</h2><p>${esc(pod.about)}</p><div class="platforms">${links}</div></div>
+      ${seasons}</section>`);
+  });
+  main.insertAdjacentHTML('beforeend', '<p class="empty" id="none" hidden>לא נמצאו שיעורים. נסו מילה אחרת.</p>');
+}
+
+// search: every word typed must appear somewhere in the lesson (title, description, series, podcast)
+function norm(s){
+  return String(s).toLowerCase()
+    .replace(/[֑-ׇ]/g, '')            // niqqud and cantillation
+    .replace(/[׳״"'`´‘’“”]/g, '')     // gershayim and quotes: חז"ל = חזל = חז״ל
+    .replace(/[־\-–—_.,:;!?()\[\]]/g, ' ')  // maqaf, hyphens and punctuation separate words
+    .replace(/\s+/g, ' ').trim();
+}
+const PREFIXES = 'הוכלמבש';
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// A word matches when it starts with the typed text, optionally after one prefix letter
+// (so "פסח" finds "פסח" and "לפסח", but "נח" doesn't land inside "פנחס"). Typed prefixes are
+// also tried without it, so "לפסח" finds "פסח".
+function hasTerm(text, t){
+  const variants = t.length >= 4 && PREFIXES.includes(t[0]) ? [t, t.slice(1)] : [t];
+  return variants.some(v => new RegExp('(^| )[' + PREFIXES + ']?' + reEsc(v)).test(text));
+}
+function search(raw){
+  const terms = norm(raw).split(' ').filter(Boolean);
+  let any = false;
+  document.querySelectorAll('details.season').forEach(d => {
+    let hits = 0;
+    d.querySelectorAll('li.lesson').forEach(li => {
+      const ok = terms.every(t => hasTerm(li.dataset.text, t));
+      li.hidden = !ok; if (ok) hits++;
+    });
+    d.hidden = hits === 0; if (terms.length && hits) d.open = true;
+    if (hits) any = true;
+  });
+  return {terms, any};
+}
+$('q').addEventListener('input', e => {
+  const {terms, any} = search(e.target.value);
+  const q = terms.length;
+  document.querySelectorAll('section.pod').forEach(s => s.hidden = !s.querySelector('details.season:not([hidden])'));
+  $('topics').hidden = !!q;
+  $('none').hidden = any;
+});
+
+// player
+const audio = $('audio'); let current = null;
+const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+let speedIdx = 0;
+function setIcons(){
+  document.querySelectorAll('[data-play]').forEach(b => {
+    const on = b.dataset.play === current && !audio.paused;
+    b.classList.toggle('on', on); b.innerHTML = on ? ICON_PAUSE : ICON_PLAY;
+  });
+}
+function play(id){
+  if (current === id) { audio.paused ? audio.play() : audio.pause(); return; }
+  const l = lessons[id]; current = id;
+  audio.src = l.audio; audio.playbackRate = SPEEDS[speedIdx];
+  $('now').textContent = `${l.title} · ${l.pod}`;
+  $('player').classList.add('show');
+  audio.play().catch(() => {});
+}
+$('speed').onclick = () => { speedIdx = (speedIdx + 1) % SPEEDS.length; audio.playbackRate = SPEEDS[speedIdx]; $('speed').textContent = '×' + SPEEDS[speedIdx]; };
+$('close').onclick = () => { audio.pause(); $('player').classList.remove('show'); current = null; setIcons(); };
+['play','pause','ended'].forEach(ev => audio.addEventListener(ev, setIcons));
+
+const toast = m => { const t = $('toast'); t.textContent = m; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); };
+async function copy(text, msg){ try { await navigator.clipboard.writeText(text); toast(msg); } catch(e){ prompt('העתיקו את הקישור:', text); } }
+
+document.addEventListener('click', async e => {
+  const p = e.target.closest('[data-play]'); if (p) return play(p.dataset.play);
+  const s = e.target.closest('[data-share]');
+  if (s) {
+    const l = lessons[s.dataset.share], url = location.href.split('#')[0] + '#' + l.id;
+    if (navigator.share) { try { await navigator.share({title: l.title, text: `${l.title} · שיעורי תורה, אלעד וולקן`, url}); } catch(e){} }
+    else copy(url, 'הקישור לשיעור הועתק');
+    return;
+  }
+  const r = e.target.closest('[data-rss]');
+  if (r) copy(r.dataset.rss, 'הקישור הועתק. הדביקו אותו באפליקציית הפודקאסטים שלכם');
+});
+
+// open a shared lesson link (#l1a2b3c)
+function openHash(){
+  const li = location.hash && document.querySelector(location.hash.replace(/[^#\w-]/g,''));
+  if (!li || !li.classList.contains('lesson')) return;
+  li.closest('details').open = true; li.classList.add('hit');
+  setTimeout(() => li.scrollIntoView({block:'center'}), 50);
+}
+
+render(); openHash();
+window.addEventListener('hashchange', openHash);
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title><![CDATA[אמת ואמונה]]></title>
+    <description><![CDATA[עיונים ומחשבות על נושאי יסוד באמונה היהודית]]></description>
+    <link>https://wulkane.github.io/shiurim/#p-emuna</link>
+    <atom:link href="https://wulkane.github.io/shiurim/feeds/emuna.xml" rel="self" type="application/rss+xml"/>
+    <language>he</language>
+    <copyright><![CDATA[אלעד וולקן]]></copyright>
+    <itunes:author><![CDATA[אלעד וולקן]]></itunes:author>
+    <itunes:owner>
+      <itunes:name><![CDATA[אלעד וולקן]]></itunes:name>
+      <itunes:email>shiurei.torah.elad.wulkan@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/covers/emuna.jpg"/>
+    <image><url>https://shiurim-media.wulkane.workers.dev/art/covers/emuna.jpg</url><title><![CDATA[אמת ואמונה]]></title><link>https://wulkane.github.io/shiurim/</link></image>
+    <itunes:category text="Religion &amp; Spirituality"><itunes:category text="Judaism"/></itunes:category>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <podcast:locked>no</podcast:locked>
+    <item>
+      <title><![CDATA[תפילה (1)- יסודות התפילה]]></title>
+      <description><![CDATA[התבוננות במהותה של התפילה ובשני המימדים שהיא כוללת]]></description>
+      <link>https://wulkane.github.io/shiurim/#l683444</link>
+      <guid isPermaLink="false">ac2860f1-ced4-437a-a4f8-62faef32f9ab</guid>
+      <pubDate>Thu, 22 Oct 2026 21:27:53 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l683444.m4a" length="16004942" type="audio/x-m4a"/>
+      <itunes:duration>988</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l683444.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="תפילה">5</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[יחס האדם לאלוהיו (4)- הראי"ה קוק]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס האדם לאלוהיו במסורת היהודית לפי התקופות וההוגים השונים: -תקופת התנ"ך - שיטת הרמב"ם -שיטות בעל התניא ונפש החיים -שיטת הראי"ה קוק]]></description>
+      <link>https://wulkane.github.io/shiurim/#lcac112</link>
+      <guid isPermaLink="false">c01346c4-c94e-4bbc-9f8d-8ce98eb591f7</guid>
+      <pubDate>Thu, 18 Sep 2025 09:20:18 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lcac112.m4a" length="42292253" type="audio/x-m4a"/>
+      <itunes:duration>2610</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lcac112.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="יחס האדם לאלוהיו">4</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[יחס האדם לאלוהיו (3)- בעל התניא ונפש החיים]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס האדם לאלוהיו במסורת היהודית לפי התקופות וההוגים השונים: -תקופת התנ"ך - שיטת הרמב"ם -שיטות בעל התניא ונפש החיים -שיטת הראי"ה קוק]]></description>
+      <link>https://wulkane.github.io/shiurim/#lbb1c87</link>
+      <guid isPermaLink="false">fe603f37-ff9a-4384-933b-2a1f615a8d49</guid>
+      <pubDate>Thu, 18 Sep 2025 09:16:06 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lbb1c87.m4a" length="37328502" type="audio/x-m4a"/>
+      <itunes:duration>2303</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lbb1c87.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="יחס האדם לאלוהיו">4</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[יחס האדם לאלוהיו (2)- רמב"ם]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס האדם לאלוהיו במסורת היהודית לפי התקופות וההוגים השונים: -תקופת התנ"ך - שיטת הרמב"ם -שיטות בעל התניא ונפש החיים -שיטת הראי"ה קוק]]></description>
+      <link>https://wulkane.github.io/shiurim/#l7217b1</link>
+      <guid isPermaLink="false">9592e4eb-6628-4477-8d9b-d3cd52b42686</guid>
+      <pubDate>Thu, 18 Sep 2025 09:14:08 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l7217b1.m4a" length="40923172" type="audio/x-m4a"/>
+      <itunes:duration>2525</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l7217b1.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="יחס האדם לאלוהיו">4</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[יחס האדם לאלוהיו (1)- תקופת התנ"ך]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס האדם לאלוהיו במסורת היהודית לפי התקופות וההוגים השונים: -תקופת התנ"ך - שיטת הרמב"ם -שיטות בעל התניא ונפש החיים -שיטת הראי"ה קוק תוך כדי השיעור הוער על גדעון שחשש גם כן מכך שראה את מלאך ה'. המענה שלי היה לא נכון והשואל צדק בדבריו]]></description>
+      <link>https://wulkane.github.io/shiurim/#ld59c11</link>
+      <guid isPermaLink="false">737f19cf-87f2-426a-918a-cb3f981d9ddb</guid>
+      <pubDate>Thu, 18 Sep 2025 09:08:33 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/ld59c11.m4a" length="41402044" type="audio/x-m4a"/>
+      <itunes:duration>2535</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/ld59c11.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="יחס האדם לאלוהיו">4</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[עולמם של גדולי האומה (6)- עליית/ ירידת הדורות]]></title>
+      <description><![CDATA[סדרה שעוסקת בתפיסותיהם וסגנונם של גדולי האומה בתקופות שונות והיחס ביניהם: -הנביאים -חז"ל -בעלי המחשבה והמקובלים -עליית/ ירידת הדורות]]></description>
+      <link>https://wulkane.github.io/shiurim/#ldff559</link>
+      <guid isPermaLink="false">9130bad8-569a-4db6-9821-d0eee56a3ec4</guid>
+      <pubDate>Thu, 18 Sep 2025 10:38:56 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/ldff559.m4a" length="45548419" type="audio/x-m4a"/>
+      <itunes:duration>2814</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/ldff559.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="עולמם של גדולי האומה">3</podcast:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[עולמם של גדולי האומה (5)- בעלי המחשבה הפילוסופית והמקובלים]]></title>
+      <description><![CDATA[סדרה שעוסקת בתפיסותיהם וסגנונם של גדולי האומה בתקופות שונות והיחס ביניהם: -הנביאים -חז"ל -בעלי המחשבה הפילוסופית והמקובלים -עליית/ ירידת הדורות]]></description>
+      <link>https://wulkane.github.io/shiurim/#la15ce5</link>
+      <guid isPermaLink="false">6c41520d-944c-4cfa-94f9-a19acbb7ee44</guid>
+      <pubDate>Thu, 18 Sep 2025 10:35:19 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/la15ce5.m4a" length="54686485" type="audio/x-m4a"/>
+      <itunes:duration>3379</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/la15ce5.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="עולמם של גדולי האומה">3</podcast:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[עולמם של גדולי האומה (4)- חז"ל]]></title>
+      <description><![CDATA[סדרה שעוסקת בתפיסותיהם וסגנונם של גדולי האומה בתקופות שונות והיחס ביניהם: -הנביאים -חז"ל -בעלי המחשבה והמקובלים -עליית/ ירידת הדורות]]></description>
+      <link>https://wulkane.github.io/shiurim/#le96ef6</link>
+      <guid isPermaLink="false">ecdeb166-94f4-4d53-935f-e86500288569</guid>
+      <pubDate>Thu, 18 Sep 2025 10:32:33 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/le96ef6.m4a" length="40608806" type="audio/x-m4a"/>
+      <itunes:duration>2509</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/le96ef6.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="עולמם של גדולי האומה">3</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[עולמם של גדולי האומה (3)- חז"ל ויסודות תורה שבעל פה]]></title>
+      <description><![CDATA[סדרה שעוסקת בתפיסותיהם וסגנונם של גדולי האומה בתקופות שונות והיחס ביניהם: -הנביאים -חז"ל -בעלי המחשבה הפילוסופית והמקובלים -עליית/ ירידת הדורות]]></description>
+      <link>https://wulkane.github.io/shiurim/#la854b2</link>
+      <guid isPermaLink="false">b8ff1ed2-19c8-4d2e-acd3-56ecb8d22cd5</guid>
+      <pubDate>Thu, 18 Sep 2025 10:30:29 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/la854b2.m4a" length="38854327" type="audio/x-m4a"/>
+      <itunes:duration>2400</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/la854b2.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="עולמם של גדולי האומה">3</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[עולמם של גדולי האומה (2)- בין נבואה לחכמה]]></title>
+      <description><![CDATA[סדרה שעוסקת בתפיסותיהם וסגנונם של גדולי האומה בתקופות שונות והיחס ביניהם: -הנביאים -חז"ל -בעלי המחשבה הפילוסופית והמקובלים -עליית/ ירידת הדורות]]></description>
+      <link>https://wulkane.github.io/shiurim/#lef19fc</link>
+      <guid isPermaLink="false">c108a820-35bb-4904-b5cf-08d8647dd40d</guid>
+      <pubDate>Thu, 18 Sep 2025 10:22:41 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lef19fc.m4a" length="44724714" type="audio/x-m4a"/>
+      <itunes:duration>2763</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lef19fc.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="עולמם של גדולי האומה">3</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[עולמם של גדולי האומה (1)- הנביאים]]></title>
+      <description><![CDATA[סדרה שעוסקת בתפיסותיהם וסגנונם של גדולי האומה בתקופות שונות והיחס ביניהם: -הנביאים -חז"ל -בעלי המחשבה הפילוסופית והמקובלים -עליית/ ירידת הדורות]]></description>
+      <link>https://wulkane.github.io/shiurim/#lbf1e5d</link>
+      <guid isPermaLink="false">af207d39-a71b-48c7-a9a0-4198ce26cf40</guid>
+      <pubDate>Thu, 18 Sep 2025 10:19:12 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lbf1e5d.m4a" length="40931371" type="audio/x-m4a"/>
+      <itunes:duration>2526</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lbf1e5d.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="עולמם של גדולי האומה">3</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מעגלים בחיי האדם (7)- האני ומימוש עצמי]]></title>
+      <description><![CDATA[סדרה העוסקת במעגלים בחיי האדם לאור מקורות המסורת היהודית תוך השוואה לתפיסות שונות: -זוגיות -משפחה -חברה -לאומיות ועם ישראל -בין ישראל לעמים והאנטישמיות -הטבע ובעלי החיים -האני ומימוש עצמי]]></description>
+      <link>https://wulkane.github.io/shiurim/#l3cc0ba</link>
+      <guid isPermaLink="false">1a153236-d25c-40c4-8d10-341d2932e058</guid>
+      <pubDate>Thu, 18 Sep 2025 10:14:20 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l3cc0ba.m4a" length="40780165" type="audio/x-m4a"/>
+      <itunes:duration>2516</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l3cc0ba.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="מעגלים בחיי האדם">2</podcast:season>
+      <itunes:episode>7</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מעגלים בחיי האדם (6)- הטבע ובעלי החיים]]></title>
+      <description><![CDATA[סדרה העוסקת במעגלים בחיי האדם לאור מקורות המסורת היהודית תוך השוואה לתפיסות שונות: -זוגיות -משפחה -חברה -לאומיות ועם ישראל -בין ישראל לעמים והאנטישמיות -הטבע ובעלי החיים -האני ומימוש עצמי]]></description>
+      <link>https://wulkane.github.io/shiurim/#l8c7ec1</link>
+      <guid isPermaLink="false">99e16119-c80e-4a6a-89c5-d48a5ab5034f</guid>
+      <pubDate>Thu, 18 Sep 2025 10:12:04 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l8c7ec1.m4a" length="47932816" type="audio/x-m4a"/>
+      <itunes:duration>2958</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l8c7ec1.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="מעגלים בחיי האדם">2</podcast:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מעגלים בחיי האדם (5)- בין ישראל לעמים והאנטישמיות]]></title>
+      <description><![CDATA[סדרה העוסקת במעגלים בחיי האדם לאור מקורות המסורת היהודית תוך השוואה לתפיסות שונות: -זוגיות -משפחה -חברה -לאומיות ועם ישראל -בין ישראל לעמים והאנטישמיות -הטבע ובעלי החיים -האני ומימוש עצמי]]></description>
+      <link>https://wulkane.github.io/shiurim/#l2209b2</link>
+      <guid isPermaLink="false">355e3ae9-9a4a-41cf-aa25-0a9905fe9027</guid>
+      <pubDate>Thu, 18 Sep 2025 10:10:01 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l2209b2.m4a" length="41085774" type="audio/x-m4a"/>
+      <itunes:duration>2535</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l2209b2.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="מעגלים בחיי האדם">2</podcast:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מעגלים בחיי האדם (4)- לאומיות ועם ישראל]]></title>
+      <description><![CDATA[סדרה העוסקת במעגלים בחיי האדם לאור מקורות המסורת היהודית תוך השוואה לתפיסות שונות: -זוגיות -משפחה -חברה -לאומיות ועם ישראל -בין ישראל לעמים והאנטישמיות -הטבע ובעלי החיים -האני ומימוש עצמי]]></description>
+      <link>https://wulkane.github.io/shiurim/#l29ece7</link>
+      <guid isPermaLink="false">46543821-f916-4e38-a9f9-ac99427fa170</guid>
+      <pubDate>Thu, 18 Sep 2025 10:08:03 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l29ece7.m4a" length="45577745" type="audio/x-m4a"/>
+      <itunes:duration>2812</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l29ece7.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="מעגלים בחיי האדם">2</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מעגלים בחיי האדם (3)- חברה]]></title>
+      <description><![CDATA[סדרה העוסקת במעגלים בחיי האדם לאור מקורות המסורת היהודית תוך השוואה לתפיסות שונות: -זוגיות -משפחה -חברה -לאומיות ועם ישראל -בין ישראל לעמים והאנטישמיות -הטבע ובעלי החיים -האני ומימוש עצמי]]></description>
+      <link>https://wulkane.github.io/shiurim/#l58e9a7</link>
+      <guid isPermaLink="false">10e8bf23-cd42-42c4-953e-a2688bdf4c76</guid>
+      <pubDate>Thu, 18 Sep 2025 10:05:09 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l58e9a7.m4a" length="38020394" type="audio/x-m4a"/>
+      <itunes:duration>2346</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l58e9a7.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="מעגלים בחיי האדם">2</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מעגלים בחיי האדם (2)- משפחה]]></title>
+      <description><![CDATA[סדרה העוסקת במעגלים בחיי האדם לאור מקורות המסורת היהודית תוך השוואה לתפיסות שונות: -זוגיות -משפחה -חברה -לאומיות ועם ישראל -בין ישראל לעמים והאנטישמיות -הטבע ובעלי החיים -האני ומימוש עצמי]]></description>
+      <link>https://wulkane.github.io/shiurim/#l526b2e</link>
+      <guid isPermaLink="false">f25167d9-d756-4b82-81e1-4b634fd24b40</guid>
+      <pubDate>Thu, 18 Sep 2025 10:03:29 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l526b2e.m4a" length="43296059" type="audio/x-m4a"/>
+      <itunes:duration>2672</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l526b2e.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="מעגלים בחיי האדם">2</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מעגלים בחיי האדם (1)- זוגיות]]></title>
+      <description><![CDATA[סדרה העוסקת במעגלים בחיי האדם לאור מקורות המסורת היהודית תוך השוואה לתפיסות שונות: -זוגיות -משפחה -חברה -לאומיות ועם ישראל -בין ישראל לעמים והאנטישמיות -הטבע ובעלי החיים -האני ומימוש עצמי]]></description>
+      <link>https://wulkane.github.io/shiurim/#l470366</link>
+      <guid isPermaLink="false">48dbf2c1-a223-4686-9191-4a382062a80b</guid>
+      <pubDate>Thu, 18 Sep 2025 10:00:12 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l470366.m4a" length="44438295" type="audio/x-m4a"/>
+      <itunes:duration>2742</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l470366.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="מעגלים בחיי האדם">2</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (8)- מערך הכשרות]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#lfd6918</link>
+      <guid isPermaLink="false">d810bad2-5f64-4e4a-8117-15daaa7153b4</guid>
+      <pubDate>Thu, 18 Sep 2025 10:55:18 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lfd6918.m4a" length="52205212" type="audio/x-m4a"/>
+      <itunes:duration>3222</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lfd6918.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>8</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (7)- צביון השבת]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#lfa44dc</link>
+      <guid isPermaLink="false">24ae8cb9-7473-48cc-8566-ad9821403fdd</guid>
+      <pubDate>Thu, 18 Sep 2025 09:44:56 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lfa44dc.m4a" length="54125696" type="audio/x-m4a"/>
+      <itunes:duration>3340</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lfa44dc.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>7</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (6)- גיור]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l2dc2e5</link>
+      <guid isPermaLink="false">819da5bf-b2df-4970-9a45-4d3f1507ab8e</guid>
+      <pubDate>Thu, 18 Sep 2025 09:43:01 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l2dc2e5.m4a" length="65719957" type="audio/x-m4a"/>
+      <itunes:duration>4056</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l2dc2e5.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (5)- נישואים אזרחיים]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#lc2eea7</link>
+      <guid isPermaLink="false">e6d32e5b-11e2-445c-87a6-5dbe0165f299</guid>
+      <pubDate>Thu, 18 Sep 2025 09:39:18 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lc2eea7.m4a" length="59563991" type="audio/x-m4a"/>
+      <itunes:duration>3676</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lc2eea7.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (4)- כפייה דתית]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l4de0b7</link>
+      <guid isPermaLink="false">098e5332-a82f-4a1a-9c83-4fd371c5e282</guid>
+      <pubDate>Thu, 18 Sep 2025 09:36:28 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l4de0b7.m4a" length="53773941" type="audio/x-m4a"/>
+      <itunes:duration>3318</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l4de0b7.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (3)- ערכי המדינה]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#lc636c5</link>
+      <guid isPermaLink="false">a3edc083-0e33-4310-900f-e2c12c6d54a0</guid>
+      <pubDate>Thu, 18 Sep 2025 09:34:27 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lc636c5.m4a" length="38734141" type="audio/x-m4a"/>
+      <itunes:duration>2390</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lc636c5.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (2)- צורת השלטון ב]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l4fc856</link>
+      <guid isPermaLink="false">b9da0d45-82f5-45a7-9952-b20d20ac9a0f</guid>
+      <pubDate>Thu, 18 Sep 2025 09:30:58 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l4fc856.m4a" length="36154787" type="audio/x-m4a"/>
+      <itunes:duration>2231</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l4fc856.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[המדינה היהודית (1)- צורת השלטון א]]></title>
+      <description><![CDATA[סדרה העוסקת ביחס למדינה היהודית לפי מקורות המסורת היהודית, תוך עיסוק בנושאים רלוונטיים שעל הפרק ביחסי דת ומדינה: - צורת השלטון - ערכי המדינה היהודית - כפייה דתית -נישואים אזרחיים -גיור -צביון השבת -מערך הכשרות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l621b14</link>
+      <guid isPermaLink="false">c6124f0b-3156-4644-8d4d-b51ba6e1ba3a</guid>
+      <pubDate>Thu, 18 Sep 2025 09:26:08 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l621b14.m4a" length="40923606" type="audio/x-m4a"/>
+      <itunes:duration>2525</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l621b14.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="המדינה היהודית">1</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+  </channel>
+</rss>

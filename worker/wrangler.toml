@@ -1,0 +1,8 @@
+name = "shiurim-media"
+main = "media.js"
+compatibility_date = "2026-10-01"
+
+# the audio and artwork bucket, available to media.js as env.MEDIA
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "shiurim-media"

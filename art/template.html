@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;500;600&family=Assistant:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Square artwork, 1000x1000 CSS px (rendered at 1.5x or 3x). Params come in the URL hash:
+     #kind=cover|episode&icon=0..2&pod=...&small=...&big=... */
+  * { box-sizing:border-box; margin:0; }
+  html, body { width:1000px; height:1000px; overflow:hidden; }
+  body { font-family:'Assistant', Arial, sans-serif; color:#f5ecdc;
+    background:radial-gradient(110% 90% at 80% 5%, #4a3420 0%, #2f2219 55%, #22180f 100%); position:relative; }
+  .frame { position:absolute; inset:38px; border:1.5px solid rgba(201,156,92,.45); border-radius:6px; }
+  .frame::after { content:''; position:absolute; inset:10px; border:1px solid rgba(201,156,92,.22); border-radius:3px; }
+  .art { position:absolute; color:#c99c5c; pointer-events:none; }
+  .cover .art { position:static; width:330px; margin-bottom:34px; opacity:.95; }
+  .episode .art { width:480px; left:-80px; top:-60px; opacity:.1; }
+  .box { position:absolute; inset:120px 110px; display:flex; flex-direction:column; }
+  .cover .box { justify-content:center; align-items:center; text-align:center; }
+  .episode .box { justify-content:center; }
+  .small { font-family:'Noto Serif Hebrew', serif; font-weight:500; color:#c99c5c; font-size:44px; display:flex; align-items:center; gap:22px; }
+  .small::before { content:''; width:70px; height:2px; background:currentColor; flex:none; }
+  .big { font-family:'Noto Serif Hebrew', serif; font-weight:600; line-height:1.18; margin-top:26px; }
+  .cover .big { margin:0; }
+  .foot { position:absolute; inset:auto 110px 100px; display:flex; justify-content:space-between; align-items:baseline; font-size:34px; color:#d6c3a5; }
+  .foot b { font-family:'Noto Serif Hebrew', serif; font-weight:500; color:#f5ecdc; }
+  .cover .author { font-family:'Noto Serif Hebrew', serif; font-weight:500; color:#c99c5c; font-size:52px; margin-top:26px; }
+  .cover .kicker { font-size:34px; letter-spacing:.12em; color:#d6c3a5; margin-bottom:18px; }
+</style>
+</head>
+<body>
+<div class="frame"></div>
+<div id="root"></div>
+<script>
+const ICONS = [
+  '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"><path d="M24 13c-5-3.5-11-4.5-18-3.5v27c7-1 13 0 18 3.5 5-3.5 11-4.5 18-3.5v-27c-7-1-13 0-18 3.5z"/><path d="M24 13v27M10 16c4-.4 7.5.2 10 1.4M10 22c4-.4 7.5.2 10 1.4M10 28c4-.4 7.5.2 10 1.4M38 16c-4-.4-7.5.2-10 1.4M38 22c-4-.4-7.5.2-10 1.4M38 28c-4-.4-7.5.2-10 1.4"/></svg>',
+  '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round"><rect x="8" y="33" width="32" height="7" rx="1.5"/><rect x="11" y="25" width="28" height="8" rx="1.5"/><rect x="9" y="17" width="27" height="8" rx="1.5"/><path d="M14 33v7M34 25v8M14 17v8"/><path d="M27 8l8 9"/></svg>',
+  '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M24 15v24M17 40h14"/><path d="M24 33C11 33 10 24 10 16M24 29C15.5 29 15 22 15 16M24 25C20 25 19.5 20 19.5 16M24 33C37 33 38 24 38 16M24 29C32.5 29 33 22 33 16M24 25C28 25 28.5 20 28.5 16"/><path d="M10 11.5v1.5M15 11.5v1.5M19.5 11.5v1.5M24 10.5v1.5M28.5 11.5v1.5M33 11.5v1.5M38 11.5v1.5" stroke-width="1.8"/></svg>',
+];
+const P = Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
+const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.body.className = P.kind || 'episode';
+const icon = `<div class="art">${ICONS[+P.icon || 0]}</div>`;
+const root = document.getElementById('root');
+if (P.kind === 'cover') {
+  root.innerHTML = `<div class="box">${icon}<div class="kicker">שיעורי תורה</div><div class="big" id="big">${esc(P.big)}</div><div class="author">אלעד וולקן</div></div>`;
+} else {
+  root.innerHTML = `${icon}<div class="box"><div class="small">${esc(P.small)}</div><div class="big" id="big">${esc(P.big)}</div></div>
+    <div class="foot"><b>${esc(P.pod)}</b><span>אלעד וולקן</span></div>`;
+}
+// largest font size that keeps the title inside its box
+async function fit(){
+  try { await document.fonts.ready; } catch(e){}
+  const big = document.getElementById('big');
+  const maxH = P.kind === 'cover' ? 250 : 520, maxW = 780;
+  let size = P.kind === 'cover' ? 104 : 120;
+  big.style.fontSize = size + 'px';
+  while ((big.scrollHeight > maxH || big.scrollWidth > maxW) && size > 40) { size -= 4; big.style.fontSize = size + 'px'; }
+  document.title = 'ready';
+}
+fit();
+</script>
+</body>
+</html>

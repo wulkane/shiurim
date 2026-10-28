@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title><![CDATA[מועדי ישראל]]></title>
+    <description><![CDATA[מהותם של חגי ישראל ומועדיו לאור פסוקי התורה ודברי חז"ל]]></description>
+    <link>https://wulkane.github.io/shiurim/#p-moadim</link>
+    <atom:link href="https://wulkane.github.io/shiurim/feeds/moadim.xml" rel="self" type="application/rss+xml"/>
+    <language>he</language>
+    <copyright><![CDATA[אלעד וולקן]]></copyright>
+    <itunes:author><![CDATA[אלעד וולקן]]></itunes:author>
+    <itunes:owner>
+      <itunes:name><![CDATA[אלעד וולקן]]></itunes:name>
+      <itunes:email>shiurei.torah.elad.wulkan@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/covers/moadim.jpg"/>
+    <image><url>https://shiurim-media.wulkane.workers.dev/art/covers/moadim.jpg</url><title><![CDATA[מועדי ישראל]]></title><link>https://wulkane.github.io/shiurim/</link></image>
+    <itunes:category text="Religion &amp; Spirituality"><itunes:category text="Judaism"/></itunes:category>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <podcast:locked>no</podcast:locked>
+    <item>
+      <title><![CDATA[בין המצרים והגאולה]]></title>
+      <description><![CDATA[סיבות שונות לגאולת ישראל (על פי החלוקה של הרב פרופ' יוני גרוסמן) ומקומם של ימי בין המצרים בדורנו]]></description>
+      <link>https://wulkane.github.io/shiurim/#ld7576b</link>
+      <guid isPermaLink="false">9aea7a27-b06c-49bd-b9b7-5583d269ea3c</guid>
+      <pubDate>Thu, 18 Sep 2025 10:50:36 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/ld7576b.m4a" length="32189303" type="audio/x-m4a"/>
+      <itunes:duration>1988</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/ld7576b.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[יום העצמאות- גאולתנו מול גאולת מצרים]]></title>
+      <description><![CDATA[התבוננות במעלתה של גאולתנו על גאולת מצרים]]></description>
+      <link>https://wulkane.github.io/shiurim/#ld6fc7a</link>
+      <guid isPermaLink="false">9aca5e44-ddb4-406a-9830-67f5f4bbffd2</guid>
+      <pubDate>Tue, 21 Apr 2026 13:10:38 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/ld6fc7a.m4a" length="12129037" type="audio/x-m4a"/>
+      <itunes:duration>749</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/ld6fc7a.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[פסח- שני הרבדים של יציאת מצרים]]></title>
+      <description><![CDATA[עיון מתוך הפסוקים בשני הרבדים של יציאת מצרים והמסרים העולים מהם]]></description>
+      <link>https://wulkane.github.io/shiurim/#l6dd010</link>
+      <guid isPermaLink="false">3b1d89da-96e1-481f-aa7e-9765ac0c3899</guid>
+      <pubDate>Wed, 25 Mar 2026 21:04:32 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l6dd010.m4a" length="15201002" type="audio/x-m4a"/>
+      <itunes:duration>939</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l6dd010.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[פסח ומטרות יציאת מצרים]]></title>
+      <description><![CDATA[שתי המטרות של יציאת מצרים העולות מהפסוקים המלמדות אותנו על ההשגחה האלוקית, ערכי הצדק ותפקידו של עם ישראל]]></description>
+      <link>https://wulkane.github.io/shiurim/#le1722b</link>
+      <guid isPermaLink="false">d73e089b-199a-4a96-8e3d-b5079532848d</guid>
+      <pubDate>Thu, 18 Sep 2025 10:44:54 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/le1722b.m4a" length="33777213" type="audio/x-m4a"/>
+      <itunes:duration>2084</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/le1722b.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[פורים- התבוננות בסיפור המגילה]]></title>
+      <description><![CDATA[עיון בסיפור הרקע למגילה, בנקודות מרכזיות ובמסר העולה ממנה. תיקון טעות: אחשוורוש לפי השיטה השנייה שהצגתי מלך סביב שנת 480 לפני הספירה (כ40 שנה לאחר הקמת הבית השני) ולא בשנת 380 לפנה"ס כפי שאמרתי בשיעור]]></description>
+      <link>https://wulkane.github.io/shiurim/#l2c75fa</link>
+      <guid isPermaLink="false">89f211a5-f4da-46a9-8caf-bc30b0e857c2</guid>
+      <pubDate>Wed, 25 Feb 2026 19:21:05 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l2c75fa.m4a" length="19657341" type="audio/x-m4a"/>
+      <itunes:duration>1214</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l2c75fa.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[חנוכה- להודות ולהלל]]></title>
+      <description><![CDATA[מה עניינו המיוחד של חנוכה ומה הוא מלמד אותנו על אופן ההודאה לה'?]]></description>
+      <link>https://wulkane.github.io/shiurim/#l3d829c</link>
+      <guid isPermaLink="false">346016d9-39c4-4f35-91e8-818441bbd8b9</guid>
+      <pubDate>Wed, 17 Dec 2025 06:08:10 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l3d829c.m4a" length="18272593" type="audio/x-m4a"/>
+      <itunes:duration>1128</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l3d829c.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[חנוכה- בין ישראל לתרבות יון]]></title>
+      <description><![CDATA[השורשים לסיפור חנוכה בתנ"ך (לפי דרכו של הרש"ר הירש) המלמדים אותנו על הדומה והשונה בין ישראל לתרבות יון]]></description>
+      <link>https://wulkane.github.io/shiurim/#l99d605</link>
+      <guid isPermaLink="false">890a918d-d6aa-4f76-be95-3428c54ea55e</guid>
+      <pubDate>Thu, 18 Sep 2025 10:47:21 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l99d605.m4a" length="39793095" type="audio/x-m4a"/>
+      <itunes:duration>2455</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l99d605.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[סוכות- הסוכה, ארבעת המינים ופרשת המועדות]]></title>
+      <description><![CDATA[מבט חדש על עניינו של חג הסוכות, ארבעת המינים ומצוות הסוכה לאור עיון בפרשת המועדות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l51cd43</link>
+      <guid isPermaLink="false">a67de9ae-6729-4c5c-9b1e-3c42ffc4e75b</guid>
+      <pubDate>Thu, 24 Sep 2026 18:03:38 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l51cd43.m4a" length="13428078" type="audio/x-m4a"/>
+      <itunes:duration>829</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l51cd43.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[יום כיפור- שלושה רבדים של תשובה וכפרה]]></title>
+      <description><![CDATA[התבוננות ברבדים שונים של התשובה והכפרה שעולים מפסוקי התורה, מדברי חז"ל ומספר אורות התשובה]]></description>
+      <link>https://wulkane.github.io/shiurim/#laf372f</link>
+      <guid isPermaLink="false">bc5137fd-1c86-4ecb-b48a-a4de32968a2f</guid>
+      <pubDate>Thu, 17 Sep 2026 06:28:23 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/laf372f.m4a" length="16581221" type="audio/x-m4a"/>
+      <itunes:duration>1024</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/laf372f.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מהותו של ראש השנה]]></title>
+      <description><![CDATA[עיון במהותו של ראש השנה לאור פסוקי התורה, ספר נחמיה ודברי חז"ל]]></description>
+      <link>https://wulkane.github.io/shiurim/#l23acb5</link>
+      <guid isPermaLink="false">ed5076ff-1de8-4d3b-8a3e-5f49f352d65b</guid>
+      <pubDate>Wed, 09 Sep 2026 18:38:18 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l23acb5.m4a" length="14718487" type="audio/x-m4a"/>
+      <itunes:duration>909</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l23acb5.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+  </channel>
+</rss>

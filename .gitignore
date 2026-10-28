@@ -1,0 +1,10 @@
+# recordings live in Google Drive and Cloudflare R2, not in git
+הקלטות/
+*.part
+__pycache__/
+.wrangler/
+node_modules/
+
+# personal files, uploaded-state tracking
+*.docx
+data/uploaded.json

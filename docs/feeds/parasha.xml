@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title><![CDATA[פשט ועומק בפרשת השבוע]]></title>
+    <description><![CDATA[עיון בפרשת השבוע מתוך פשט הפסוקים, דברי חז"ל והמפרשים, והמסרים העולים מהם לחיינו]]></description>
+    <link>https://wulkane.github.io/shiurim/#p-parasha</link>
+    <atom:link href="https://wulkane.github.io/shiurim/feeds/parasha.xml" rel="self" type="application/rss+xml"/>
+    <language>he</language>
+    <copyright><![CDATA[אלעד וולקן]]></copyright>
+    <itunes:author><![CDATA[אלעד וולקן]]></itunes:author>
+    <itunes:owner>
+      <itunes:name><![CDATA[אלעד וולקן]]></itunes:name>
+      <itunes:email>shiurei.torah.elad.wulkan@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/covers/parasha.jpg"/>
+    <image><url>https://shiurim-media.wulkane.workers.dev/art/covers/parasha.jpg</url><title><![CDATA[פשט ועומק בפרשת השבוע]]></title><link>https://wulkane.github.io/shiurim/</link></image>
+    <itunes:category text="Religion &amp; Spirituality"><itunes:category text="Judaism"/></itunes:category>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <podcast:locked>no</podcast:locked>
+    <item>
+      <title><![CDATA[ניצבים וילך- תשובת הציבור והיחיד בתנ"ך]]></title>
+      <description><![CDATA[עיון במהות תשובת הציבור והיחיד בתורה ובדברי הנביאים]]></description>
+      <link>https://wulkane.github.io/shiurim/#lfdc426</link>
+      <guid isPermaLink="false">54cc66cb-bbb4-4782-9968-92042a0bfba6</guid>
+      <pubDate>Thu, 03 Sep 2026 07:45:37 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lfdc426.mp3" length="48440640" type="audio/mpeg"/>
+      <itunes:duration>1211</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lfdc426.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>9</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[כי תבוא- ברית סיני וברית ערבות מואב]]></title>
+      <description><![CDATA[עיון בשתי הבריתות שנכרתו במדבר- ברית סיני וברית ערבות מואב, בתוכן שלהן ובמשמעות שלהן]]></description>
+      <link>https://wulkane.github.io/shiurim/#l3ab2ab</link>
+      <guid isPermaLink="false">4a05f550-ddf8-409d-ad76-9550ea63650d</guid>
+      <pubDate>Thu, 27 Aug 2026 18:03:37 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l3ab2ab.m4a" length="12647193" type="audio/x-m4a"/>
+      <itunes:duration>781</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l3ab2ab.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>8</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[כי תצא- שילוח הקן וסוגיית טעמי המצוות]]></title>
+      <description><![CDATA[עיון בטעמה של מצוות שילוח הקן ובמחלוקת הגדולה לאורך הדורות בסוגיית טעמי המצוות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l248d34</link>
+      <guid isPermaLink="false">df382470-ff41-46b2-b75c-fbd81dabe74a</guid>
+      <pubDate>Wed, 19 Aug 2026 18:16:44 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l248d34.m4a" length="21323937" type="audio/x-m4a"/>
+      <itunes:duration>1317</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l248d34.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>7</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[שופטים- הנביאים, החכמים ותורה שבעל פה]]></title>
+      <description><![CDATA[עיון במקומם של החכמים והנביאים במצוות ובתורה שבעל פה]]></description>
+      <link>https://wulkane.github.io/shiurim/#l83c480</link>
+      <guid isPermaLink="false">ffe478cd-43b2-4ddc-b24f-7e371600c676</guid>
+      <pubDate>Wed, 12 Aug 2026 18:19:17 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l83c480.m4a" length="18249307" type="audio/x-m4a"/>
+      <itunes:duration>1127</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l83c480.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[ראה- המקדש, הבמות ובתי הכנסת]]></title>
+      <description><![CDATA[העמקה במהות המקום אשר יבחר ה', באכילת בשר במדבר, בהקרבה בבמות ועניינם ובמקומם של בתי הכנסת]]></description>
+      <link>https://wulkane.github.io/shiurim/#l826071</link>
+      <guid isPermaLink="false">e187d030-516c-4a62-9a9c-bd02134d535e</guid>
+      <pubDate>Wed, 05 Aug 2026 18:11:38 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l826071.m4a" length="15759841" type="audio/x-m4a"/>
+      <itunes:duration>973</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l826071.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[עקב- פרשיות קריאת שמע]]></title>
+      <description><![CDATA[עיון בפרשיות שמע והיה ואם שמוע ועמידה על המסרים שלהן, הדומה והשונה ביניהן]]></description>
+      <link>https://wulkane.github.io/shiurim/#l16613e</link>
+      <guid isPermaLink="false">175953d6-094c-4540-8657-7be289747330</guid>
+      <pubDate>Wed, 29 Jul 2026 18:06:51 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l16613e.m4a" length="12464603" type="audio/x-m4a"/>
+      <itunes:duration>770</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l16613e.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[ואתחנן- יסודות התורה ועקרונות המצוות]]></title>
+      <description><![CDATA[עיון ביסודות תורת ישראל ובעקרונות הכוללים של מצוות התורה]]></description>
+      <link>https://wulkane.github.io/shiurim/#l896bee</link>
+      <guid isPermaLink="false">4a3425f1-7012-4f75-b975-62a440f69641</guid>
+      <pubDate>Wed, 22 Jul 2026 06:30:23 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l896bee.m4a" length="24470339" type="audio/x-m4a"/>
+      <itunes:duration>1511</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l896bee.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[דברים- המהלך הכללי של ספר דברים]]></title>
+      <description><![CDATA[העמקה במבנה ספר דברים, המהלך הכללי שלו והמסרים העיקריים העולים ממנו]]></description>
+      <link>https://wulkane.github.io/shiurim/#la37d3a</link>
+      <guid isPermaLink="false">becbf17f-b3b6-4eb2-8c04-391882cfab3a</guid>
+      <pubDate>Wed, 15 Jul 2026 18:33:24 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/la37d3a.m4a" length="17323059" type="audio/x-m4a"/>
+      <itunes:duration>1070</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/la37d3a.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מבנה ספר דברים]]></title>
+      <description><![CDATA[מבנהו של ספר דברים המלמד על מטרתו ומה שבינו לבין הברית בהר סיני]]></description>
+      <link>https://wulkane.github.io/shiurim/#l98b73b</link>
+      <guid isPermaLink="false">6df4df41-6739-4357-9304-c4c7d34588dc</guid>
+      <pubDate>Thu, 18 Sep 2025 10:52:27 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l98b73b.m4a" length="38816707" type="audio/x-m4a"/>
+      <itunes:duration>2398</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l98b73b.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="דברים">5</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[מטות מסעי- לא יחל דברו]]></title>
+      <description><![CDATA[עיון במהות הנדר, האפשרות להתירו ובדיבורו של האדם]]></description>
+      <link>https://wulkane.github.io/shiurim/#l37000c</link>
+      <guid isPermaLink="false">49eabf95-456a-4079-808f-dbc3b8855382</guid>
+      <pubDate>Wed, 08 Jul 2026 18:07:29 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l37000c.m4a" length="15713199" type="audio/x-m4a"/>
+      <itunes:duration>970</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l37000c.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>8</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[פנחס- מנהיגותם של משה ויהושע]]></title>
+      <description><![CDATA[עיון במעבר המנהיגות בין משה ליהושע ובמאפיינים של כל אחד מהם במנהיגותו]]></description>
+      <link>https://wulkane.github.io/shiurim/#lb28a4a</link>
+      <guid isPermaLink="false">4f56a69c-3084-4a6f-9e46-f81207b62391</guid>
+      <pubDate>Wed, 01 Jul 2026 18:09:55 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lb28a4a.m4a" length="13837691" type="audio/x-m4a"/>
+      <itunes:duration>854</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lb28a4a.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>7</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[בלק- נבואת בלעם וברכותיו]]></title>
+      <description><![CDATA[עיון בתוכן של נבואות בלעם, מטרתה והבחנה בין הנבואה בעמים לנבואה בישראל]]></description>
+      <link>https://wulkane.github.io/shiurim/#l5a7d11</link>
+      <guid isPermaLink="false">2c0aa7f5-d629-48b2-abe0-5b2081382e9e</guid>
+      <pubDate>Thu, 25 Jun 2026 04:45:05 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l5a7d11.m4a" length="16984804" type="audio/x-m4a"/>
+      <itunes:duration>1049</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l5a7d11.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[חוקת- חטא מי מריבה]]></title>
+      <description><![CDATA[עיון בפסוקי חטא מי מריבה והמסרים הנלמדים מפרשה זו]]></description>
+      <link>https://wulkane.github.io/shiurim/#l620036</link>
+      <guid isPermaLink="false">ad97e843-dceb-483a-870b-d9c9a972d886</guid>
+      <pubDate>Wed, 17 Jun 2026 19:05:58 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l620036.m4a" length="14112371" type="audio/x-m4a"/>
+      <itunes:duration>871</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l620036.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[קורח- כל העדה כולם קדושים]]></title>
+      <description><![CDATA[התבוננות בטענתם של קורח ועדתו מתוך הפסוקים מעלה בפנינו את תפיסתו של קורח ואת המסר שמלמדת אותנו התורה בנוגע לשוויון והבדלה]]></description>
+      <link>https://wulkane.github.io/shiurim/#lf49eb2</link>
+      <guid isPermaLink="false">0044512e-916e-4577-8060-7ab0cc22b06b</guid>
+      <pubDate>Thu, 11 Jun 2026 11:09:23 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lf49eb2.m4a" length="13653178" type="audio/x-m4a"/>
+      <itunes:duration>843</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lf49eb2.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[שלח- חטא המרגלים ומשמעותו]]></title>
+      <description><![CDATA[עיון בהשתלשלות האירועים בחטא המרגלים והמסרים הנלמדים מכך]]></description>
+      <link>https://wulkane.github.io/shiurim/#l39e57d</link>
+      <guid isPermaLink="false">9b3a610e-a796-4aec-bb9c-06f3e54e9527</guid>
+      <pubDate>Thu, 04 Jun 2026 18:07:21 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l39e57d.m4a" length="11261765" type="audio/x-m4a"/>
+      <itunes:duration>695</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l39e57d.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[בהעלותך- דור המדבר ודור באי הארץ]]></title>
+      <description><![CDATA[עיון בתלונות ישראל במדבר, בתגובותיו של משה ובמעבר בין דור המדבר לדור באי הארץ]]></description>
+      <link>https://wulkane.github.io/shiurim/#l2e0dee</link>
+      <guid isPermaLink="false">93f4d0d0-b741-4a16-8a06-c0137d273ce7</guid>
+      <pubDate>Thu, 28 May 2026 12:22:22 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l2e0dee.m4a" length="13092550" type="audio/x-m4a"/>
+      <itunes:duration>808</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l2e0dee.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[במדבר- שבטי ישראל במדבר ובארץ]]></title>
+      <description><![CDATA[עיון במקומם של שבטי ישראל בתקופת המדבר ובחיים בארץ ישראל]]></description>
+      <link>https://wulkane.github.io/shiurim/#la96d2a</link>
+      <guid isPermaLink="false">a86babc1-6d6a-471e-b472-eae62ddcccc3</guid>
+      <pubDate>Wed, 13 May 2026 18:08:03 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/la96d2a.m4a" length="14077815" type="audio/x-m4a"/>
+      <itunes:duration>869</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/la96d2a.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>4</itunes:season>
+      <podcast:season name="במדבר">4</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[בהר בחוקותי- יחס התורה לכלכלה, רווחה וצדקה]]></title>
+      <description><![CDATA[עיון בערכי התורה ביחס לכלכלה, לרווחה ולעוני]]></description>
+      <link>https://wulkane.github.io/shiurim/#l9730b1</link>
+      <guid isPermaLink="false">3425b74f-9883-405d-9097-e2d14bcfff75</guid>
+      <pubDate>Thu, 07 May 2026 18:11:16 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l9730b1.m4a" length="19221164" type="audio/x-m4a"/>
+      <itunes:duration>1187</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l9730b1.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="ויקרא">3</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[אמור- ספירת העומר וחג השבועות]]></title>
+      <description><![CDATA[התבוננות מתוך פשט הפסוקים ודברי חז"ל על מהותם של ספירת העומר וחג השבועות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l4ad056</link>
+      <guid isPermaLink="false">8b11c051-4578-49c4-a8c8-0b1c9c9b1e7b</guid>
+      <pubDate>Wed, 29 Apr 2026 19:21:42 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l4ad056.m4a" length="19472922" type="audio/x-m4a"/>
+      <itunes:duration>1203</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l4ad056.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="ויקרא">3</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[ויקרא- הקרבנות בעבר ולעתיד לבוא]]></title>
+      <description><![CDATA[התבוננות במהותם של הקרבנות בעבר ובמקומם לעתיד לבוא]]></description>
+      <link>https://wulkane.github.io/shiurim/#lf2d3a6</link>
+      <guid isPermaLink="false">909259bc-f9f9-4131-823a-89a06ab98606</guid>
+      <pubDate>Wed, 18 Mar 2026 19:47:01 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lf2d3a6.m4a" length="25669440" type="audio/x-m4a"/>
+      <itunes:duration>1586</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lf2d3a6.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>3</itunes:season>
+      <podcast:season name="ויקרא">3</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[ויקהל פקודי- מבט כולל על ספר שמות]]></title>
+      <description><![CDATA[עיון במבנה של ספר שמות, במסרים העולים ממנו ובהשתלבותו במגמות הכלליות של התורה]]></description>
+      <link>https://wulkane.github.io/shiurim/#l873975</link>
+      <guid isPermaLink="false">de8746ce-d850-406e-8073-b204bb64534d</guid>
+      <pubDate>Wed, 11 Mar 2026 19:33:22 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l873975.m4a" length="19815531" type="audio/x-m4a"/>
+      <itunes:duration>1224</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l873975.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>9</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[כי תשא- חטא העגל]]></title>
+      <description><![CDATA[עיון במהותו של חטא העגל ובמסר העולה ממנו לעבודת ה' בחיינו]]></description>
+      <link>https://wulkane.github.io/shiurim/#l7f6f91</link>
+      <guid isPermaLink="false">aea66739-d0d1-48ae-b3b4-23b81cf3da29</guid>
+      <pubDate>Wed, 04 Mar 2026 20:19:06 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l7f6f91.m4a" length="17552973" type="audio/x-m4a"/>
+      <itunes:duration>1084</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l7f6f91.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>8</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[תרומה- ושכנתי בתוכם]]></title>
+      <description><![CDATA[השיעור מפרשות המשכן על יחס האדם לאלוהיו]]></description>
+      <link>https://wulkane.github.io/shiurim/#l3049dd</link>
+      <guid isPermaLink="false">22d04c0b-ccd2-469b-8498-3cdb6a50b0b7</guid>
+      <pubDate>Wed, 18 Feb 2026 20:23:42 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l3049dd.m4a" length="24794625" type="audio/x-m4a"/>
+      <itunes:duration>1531</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l3049dd.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>7</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[משפטים- מהות הברית בהר סיני]]></title>
+      <description><![CDATA[הברית בהר סיני מלמדת אותנו על רצונו היסודי של הבורא מכל אחד מאיתנו]]></description>
+      <link>https://wulkane.github.io/shiurim/#lf81811</link>
+      <guid isPermaLink="false">3455606a-c515-4472-a350-88c44d379ec3</guid>
+      <pubDate>Wed, 11 Feb 2026 19:12:29 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lf81811.m4a" length="13676886" type="audio/x-m4a"/>
+      <itunes:duration>845</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lf81811.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[יתרו- טעמי מצוות השבת]]></title>
+      <description><![CDATA[הטעמים השונים של מצוות השבת בעשרת הדיברות מלמדים על מהותו ועניינו של יום השבת]]></description>
+      <link>https://wulkane.github.io/shiurim/#lc1cc18</link>
+      <guid isPermaLink="false">cd59d644-efbf-49a5-af13-d8ec196525c5</guid>
+      <pubDate>Wed, 04 Feb 2026 20:16:57 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lc1cc18.m4a" length="14860267" type="audio/x-m4a"/>
+      <itunes:duration>918</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lc1cc18.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[בשלח- פרשת המן]]></title>
+      <description><![CDATA[העמקה בפרשת המן מלמדת אותנו על תלות האדם באלוקיו ועל מקומו של הנביא ביחס לדברי ה']]></description>
+      <link>https://wulkane.github.io/shiurim/#l90412e</link>
+      <guid isPermaLink="false">f73c0942-7e21-4eb9-a40e-34cdbe8b6465</guid>
+      <pubDate>Wed, 28 Jan 2026 19:56:10 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l90412e.m4a" length="29593662" type="audio/x-m4a"/>
+      <itunes:duration>1828</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l90412e.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[בא- זיכרון יציאת מצרים]]></title>
+      <description><![CDATA[מטרות זכירת יציאת מצרים והיחס בין יציאת מצרים למעמד הר סיני]]></description>
+      <link>https://wulkane.github.io/shiurim/#le8c9f5</link>
+      <guid isPermaLink="false">a7afa502-47e2-4da7-b304-1180d83bc54f</guid>
+      <pubDate>Wed, 21 Jan 2026 19:39:09 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/le8c9f5.m4a" length="26168906" type="audio/x-m4a"/>
+      <itunes:duration>1616</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/le8c9f5.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[וארא- היכן נולד עם ישראל?]]></title>
+      <description><![CDATA[עיון בלידתו של עם ישראל, בשלבי הפיכתו לעם ובמשמעות של כל אלה עבורנו]]></description>
+      <link>https://wulkane.github.io/shiurim/#l4055bb</link>
+      <guid isPermaLink="false">7fdc1570-df60-4cac-842e-29e4a8dc8aae</guid>
+      <pubDate>Thu, 15 Jan 2026 18:47:25 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l4055bb.m4a" length="23491077" type="audio/x-m4a"/>
+      <itunes:duration>1451</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l4055bb.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[שמות- מעבדות לחירות]]></title>
+      <description><![CDATA[שני ההיבטים של היציאה מעבדות לחירות בסיפור יציאת מצרים והמסרים הנלמדים מהם לחיינו הפרטיים והכלליים]]></description>
+      <link>https://wulkane.github.io/shiurim/#l65b047</link>
+      <guid isPermaLink="false">a885db51-0c69-4994-b788-0035b0bc8c27</guid>
+      <pubDate>Wed, 07 Jan 2026 19:38:57 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l65b047.m4a" length="22275808" type="audio/x-m4a"/>
+      <itunes:duration>1376</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l65b047.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>2</itunes:season>
+      <podcast:season name="שמות">2</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[ויחי- התולדות בספר בראשית]]></title>
+      <description><![CDATA[מבט כולל על ספר בראשית, מטרתו ומגמתו בעקבות תשומת הלב לפרשות התולדות הבונות את הספר]]></description>
+      <link>https://wulkane.github.io/shiurim/#le00710</link>
+      <guid isPermaLink="false">24651676-681f-4af9-a4d5-f7a400457f80</guid>
+      <pubDate>Wed, 31 Dec 2025 21:14:11 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/le00710.m4a" length="26181381" type="audio/x-m4a"/>
+      <itunes:duration>1617</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/le00710.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>11</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[ויגש- יהודה ויוסף]]></title>
+      <description><![CDATA[עיון בסגנונות המנהיגות של יהודה ויוסף כפי שמשתקף בפרשות ספר בראשית וכפי שמתבטא לאורך הדורות]]></description>
+      <link>https://wulkane.github.io/shiurim/#l11faf3</link>
+      <guid isPermaLink="false">02d2cb9a-c506-4883-826d-d5f93b129563</guid>
+      <pubDate>Thu, 25 Dec 2025 06:18:15 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l11faf3.m4a" length="22705777" type="audio/x-m4a"/>
+      <itunes:duration>1402</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l11faf3.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>10</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[וישב- חלומות והתגלויות בספר בראשית]]></title>
+      <description><![CDATA[החלומות בסיפורי יוסף מובילים אותנו להבנה עמוקה בסגנונות ההתגלות בספר בראשית ומלמדים אותנו על האופנים השונים שהמסרים האלוקיים מועברים אלינו]]></description>
+      <link>https://wulkane.github.io/shiurim/#l61a070</link>
+      <guid isPermaLink="false">3c9bde2e-c785-43a2-94b6-0e067649d77c</guid>
+      <pubDate>Thu, 11 Dec 2025 20:02:06 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l61a070.m4a" length="24784156" type="audio/x-m4a"/>
+      <itunes:duration>1531</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l61a070.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>9</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[וישלח- יעקב ועשו]]></title>
+      <description><![CDATA[עיון במפגשם של יעקב ועשו על רקע קורותיהם בפרשות הקודמות מלמד אותנו על היחס להבטחה האלוקית, ערכה של המשפחה ויכולת הצמיחה דרך התמודדות]]></description>
+      <link>https://wulkane.github.io/shiurim/#le4d529</link>
+      <guid isPermaLink="false">5404119a-ff8e-4265-a463-40cc72d4ba4a</guid>
+      <pubDate>Wed, 03 Dec 2025 18:33:20 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/le4d529.m4a" length="17982867" type="audio/x-m4a"/>
+      <itunes:duration>1111</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/le4d529.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>8</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[ויצא- האמונה מול האלילות בספר בראשית]]></title>
+      <description><![CDATA[עיון במספר סיפורים בספר בראשית מלמד אותנו על סגנונו המיוחד ביחס למאבק באלילות וחושף בפנינו חוליה חשובה בתהליך ההיסטורי שבו הופיעה האמונה בבורא כל]]></description>
+      <link>https://wulkane.github.io/shiurim/#lc6d99e</link>
+      <guid isPermaLink="false">1e90bd7f-2d1f-42b1-9456-30d75c459b43</guid>
+      <pubDate>Thu, 27 Nov 2025 05:37:11 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lc6d99e.m4a" length="21160119" type="audio/x-m4a"/>
+      <itunes:duration>1307</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lc6d99e.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>7</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[תולדות- תורת האבות ותורת הבנים]]></title>
+      <description><![CDATA[מה בין המצוות שקיבלו האבות למצוות שנצטוו ישראל ביציאה ממצרים? לימוד על מהותן ומטרתן של המצוות לאור התהליך ההיסטורי של נתינתן]]></description>
+      <link>https://wulkane.github.io/shiurim/#lbdcaea</link>
+      <guid isPermaLink="false">1c5873e1-6a74-4fc6-9a81-1069a10e30b1</guid>
+      <pubDate>Wed, 19 Nov 2025 18:56:55 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lbdcaea.m4a" length="24550753" type="audio/x-m4a"/>
+      <itunes:duration>1516</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lbdcaea.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[חיי שרה- שיעורים בזוגיות מהאבות והאמהות]]></title>
+      <description><![CDATA[ארבעה שיעורים בזוגיות שלימדו אותנו אבותינו ואמותינו]]></description>
+      <link>https://wulkane.github.io/shiurim/#ldcf474</link>
+      <guid isPermaLink="false">94f15723-a696-4d11-b095-34cce5b5dd4d</guid>
+      <pubDate>Mon, 10 Nov 2025 14:45:45 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/ldcf474.m4a" length="17112189" type="audio/x-m4a"/>
+      <itunes:duration>1057</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/ldcf474.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[וירא- עקידת יצחק]]></title>
+      <description><![CDATA[מהי שיאה של עבודת ה'- ההקרבה או ההזדהות הפנימית? עיון בעקידת יצחק לאור דרכם של הרב סולובייצ'יק והראי"ה קוק]]></description>
+      <link>https://wulkane.github.io/shiurim/#lbc93f6</link>
+      <guid isPermaLink="false">96247b80-60d9-4ff0-99c6-745a2ae05220</guid>
+      <pubDate>Fri, 07 Nov 2025 08:28:06 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lbc93f6.m4a" length="22960277" type="audio/x-m4a"/>
+      <itunes:duration>1418</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/lbc93f6.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[לך לך- הבחירה באברהם אבינו]]></title>
+      <description><![CDATA[עיון בסיבת הבחירה באברהם אבינו כפי המוסבר במפרשים וכפי העולה ממשמעות הפסוקים]]></description>
+      <link>https://wulkane.github.io/shiurim/#l260366</link>
+      <guid isPermaLink="false">a0f43bda-292a-4fab-ab9d-8cdef6df790b</guid>
+      <pubDate>Thu, 30 Oct 2025 15:32:45 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l260366.m4a" length="31732991" type="audio/x-m4a"/>
+      <itunes:duration>1960</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l260366.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[נח- מעשי האדם, האדמה והמבול]]></title>
+      <description><![CDATA[עיון בקשר בין מעשי האדם לאדמה ולשאר יצורי הטבע לפני המבול ולאחריו]]></description>
+      <link>https://wulkane.github.io/shiurim/#l4a4147</link>
+      <guid isPermaLink="false">0ad96308-0494-4fdb-8b7a-a347b851e313</guid>
+      <pubDate>Wed, 14 Oct 2026 20:01:22 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l4a4147.m4a" length="13745216" type="audio/x-m4a"/>
+      <itunes:duration>849</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l4a4147.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title><![CDATA[בראשית- שני מבטים על בריאת העולם]]></title>
+      <description><![CDATA[התבוננות במשמעותם של שני סיפורי הבריאה (פרק א ופרק ב בבראשית) ביחס לה', לאדם ולמה שביניהם]]></description>
+      <link>https://wulkane.github.io/shiurim/#l8ff059</link>
+      <guid isPermaLink="false">99035610-5513-42b2-ba84-5d5629c81266</guid>
+      <pubDate>Wed, 07 Oct 2026 18:02:09 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l8ff059.m4a" length="12539420" type="audio/x-m4a"/>
+      <itunes:duration>774</itunes:duration>
+      <itunes:image href="https://shiurim-media.wulkane.workers.dev/art/lessons/l8ff059.jpg"/>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <podcast:season name="בראשית">1</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+  </channel>
+</rss>
