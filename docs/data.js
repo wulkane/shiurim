@@ -636,7 +636,7 @@ window.DATA = [
    "spotify": "https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6",
    "apple": null,
    "youtube": null,
-   "pocketcasts": null,
+   "pocketcasts": "https://pca.st/kf6bl5wi",
    "rss": "https://wulkane.github.io/shiurim/feeds/moadim.xml"
   },
   "seasons": [

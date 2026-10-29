@@ -24,7 +24,7 @@ PODCASTS = [
         'name': 'מועדי ישראל', 'key': 'moadim', 'icon': 2,
         'about': 'מהותם של חגי ישראל ומועדיו לאור פסוקי התורה ודברי חז"ל',
         'topics': ['ראש השנה', 'יום כיפור', 'סוכות', 'חנוכה', 'פורים', 'פסח', 'יום העצמאות', 'בין המצרים'],
-        'links': {'spotify': 'https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6', 'apple': None, 'youtube': None, 'pocketcasts': None},
+        'links': {'spotify': 'https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6', 'apple': None, 'youtube': None, 'pocketcasts': 'https://pca.st/kf6bl5wi'},
     },
 ]
 POD_BY_NAME = {p['name']: p for p in PODCASTS}
