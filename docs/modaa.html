@@ -212,7 +212,7 @@ $('dl').onclick = async () => {
 };
 $('share').onclick = async () => {
   const f = new File([await blob()], 'שיעור-שבועי.png', {type:'image/png'});
-  if (navigator.canShare && navigator.canShare({files:[f]})) { try { await navigator.share({files:[f], text: msg()}); } catch(e){} }
+  if (navigator.canShare && navigator.canShare({files:[f]})) { try { await navigator.share({files:[f]}); } catch(e){} }
   else toast('השיתוף לא נתמך כאן – השתמשו בהורדת תמונה');
 };
 function msg(){
