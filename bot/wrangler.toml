@@ -1,0 +1,5 @@
+name = "shiurim-bot"
+main = "bot.js"
+compatibility_date = "2026-10-01"
+
+# secrets (set with `wrangler secret put`): BOT_TOKEN, WEBHOOK_SECRET, OWNER_ID
