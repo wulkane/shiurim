@@ -57,6 +57,18 @@ def audio_names():
     return json.loads(AUDIO_NAMES.read_text(encoding='utf-8')) if AUDIO_NAMES.exists() else {}
 
 
+CLOUD_AUDIO = ROOT / 'data' / 'cloud_audio.json'
+
+
+def audio_info(lid):
+    """(suffix, size in bytes) of a lesson's audio: the local backup file, else a recording the Telegram bot uploaded."""
+    f = audio_file(lid)
+    if f:
+        return f.suffix.lower(), f.stat().st_size
+    cloud = json.loads(CLOUD_AUDIO.read_text(encoding='utf-8')) if CLOUD_AUDIO.exists() else {}
+    return (cloud[lid]['ext'], cloud[lid]['size']) if lid in cloud else None
+
+
 def audio_file(lid):
     """The local backup file for a lesson, or None. Falls back to a file still named by id."""
     name = audio_names().get(lid)

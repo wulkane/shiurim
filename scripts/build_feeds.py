@@ -12,7 +12,7 @@ from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
 from xml.sax.saxutils import escape
 
-from common import ROOT, PODCASTS, POD_BY_NAME, audio_file, lesson_id, load_catalog, load_config, season_of
+from common import ROOT, PODCASTS, POD_BY_NAME, audio_info, lesson_id, load_catalog, load_config, season_of
 
 OUT = ROOT / 'docs' / 'feeds'
 SPOTIFY = json.loads((ROOT / 'data' / 'spotify_episodes.json').read_text(encoding='utf-8'))
@@ -34,6 +34,8 @@ def pub_date(row):
     old = SPOTIFY.get(row['כותרת מקורית'].strip())
     feed_date = row.get('תאריך בפיד', '').strip()
     if feed_date:
+        if len(feed_date) > 10:   # 'dd/mm/yyyy HH:MM' (UTC), written by the Telegram bot
+            return format_datetime(datetime.strptime(feed_date, '%d/%m/%Y %H:%M').replace(tzinfo=timezone.utc), usegmt=True)
         day = datetime.strptime(feed_date, '%d/%m/%Y')
         t = parsedate_to_datetime(old['pubDate']) if old else None   # keep the original time of day
         return format_datetime(day.replace(hour=t.hour if t else 20, minute=t.minute if t else 0, second=t.second if t else 0, tzinfo=timezone.utc), usegmt=True)
@@ -60,10 +62,12 @@ def build(pod, rows, cfg):
     items, missing = [], []
     for r in rows:
         lid, s = lesson_id(r), season_of(r)
-        f = audio_file(lid)
-        if not f:
+        info = audio_info(lid)
+        if not info:
             missing.append(lid)
             continue
+        ext, size = info
+        has_art = (ROOT / 'art' / 'lessons' / f'{lid}.jpg').exists()   # lessons from the bot have none until it is rendered
         counter[s] = counter.get(s, 0) + 1
         season_tags = (f'\n      <itunes:season>{seasons.index(s) + 1}</itunes:season>'
                        f'\n      <podcast:season name="{escape(s, {chr(34): "&quot;"})}">{seasons.index(s) + 1}</podcast:season>'
@@ -74,10 +78,9 @@ def build(pod, rows, cfg):
       <link>{site}#{lid}</link>
       <guid isPermaLink="false">{escape(guid(r, lid))}</guid>
       <pubDate>{pub_date(r)}</pubDate>
-      <enclosure url="{media}audio/{lid}{f.suffix.lower()}" length="{f.stat().st_size}" type="{MIME.get(f.suffix.lower(), 'audio/mpeg')}"/>
+      <enclosure url="{media}audio/{lid}{ext}" length="{size}" type="{MIME.get(ext, 'audio/mpeg')}"/>
       <itunes:duration>{seconds(r['אורך'])}</itunes:duration>
-      <itunes:image href="{media}art/lessons/{lid}.jpg"/>
-      <itunes:episodeType>full</itunes:episodeType>{season_tags}
+{f'      <itunes:image href="{media}art/lessons/{lid}.jpg"/>' + chr(10) if has_art else ''}      <itunes:episodeType>full</itunes:episodeType>{season_tags}
       <itunes:explicit>false</itunes:explicit>
     </item>''')
     owner_email = f'\n      <itunes:email>{escape(cfg["owner_email"])}</itunes:email>' if cfg.get('owner_email') else ''

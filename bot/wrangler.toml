@@ -1,5 +1,19 @@
-name = "shiurim-bot"
+﻿name = "shiurim-bot"
 main = "bot.js"
 compatibility_date = "2026-10-01"
 
-# secrets (set with `wrangler secret put`): BOT_TOKEN, WEBHOOK_SECRET, OWNER_ID
+# secrets (set with `wrangler secret put`): BOT_TOKEN, WEBHOOK_SECRET, OWNER_ID, GITHUB_TOKEN
+[vars]
+GITHUB_REPO = "wulkane/shiurim"
+MEDIA_URL = "https://shiurim-media.wulkane.workers.dev/"
+
+# the recordings bucket (the same one media.js serves)
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "shiurim-media"
+
+# the conversation state (table bot_state in worker/schema.sql)
+[[d1_databases]]
+binding = "DB"
+database_name = "shiurim-stats"
+database_id = "9982991a-566a-4952-b95b-2734604e3fbc"

@@ -20,3 +20,6 @@ CREATE TABLE IF NOT EXISTS imported (
   as_of    TEXT    NOT NULL,   -- YYYY-MM-DD, the date of the export
   PRIMARY KEY (lesson, platform)
 );
+
+-- the Telegram bot's conversation state (one row per chat)
+CREATE TABLE IF NOT EXISTS bot_state (chat TEXT PRIMARY KEY, data TEXT NOT NULL, updated TEXT);

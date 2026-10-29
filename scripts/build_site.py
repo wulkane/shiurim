@@ -7,7 +7,7 @@ import json
 from collections import Counter
 from difflib import SequenceMatcher
 
-from common import ROOT, PODCASTS, audio_file, lesson_id, load_catalog, load_config, season_of
+from common import ROOT, PODCASTS, audio_info, lesson_id, load_catalog, load_config, season_of
 
 OUT = ROOT / 'docs' / 'data.js'
 OLD_FEED = 'https://anchor.fm/s/1080dfd28/podcast/rss'
@@ -32,11 +32,11 @@ def main():
         season, lid = season_of(r), lesson_id(r)
         if not pod['seasons'] or pod['seasons'][-1]['name'] != season:
             pod['seasons'].append({'name': season, 'about': '', 'lessons': []})
-        f = audio_file(lid)
+        info = audio_info(lid)
         pod['seasons'][-1]['lessons'].append({
             'id': lid, 'title': r['כותרת חדשה'].strip(), 'desc': r['תיאור'].strip(),
             'date': r['תאריך'], 'dur': r['אורך'],
-            'audio': f'{media}audio/{lid}{f.suffix.lower()}' if live and f else r['קישור לקובץ'],
+            'audio': f'{media}audio/{lid}{info[0]}' if live and info else r['קישור לקובץ'],
         })
     # A series repeats its description on every lesson: show it once on the season.
     for pod in pods.values():
