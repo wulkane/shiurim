@@ -8,7 +8,7 @@ window.DATA = [
    "spotify": "https://open.spotify.com/show/7KKnHKn48V0iwPmTfMdcry",
    "apple": null,
    "youtube": null,
-   "pocketcasts": null,
+   "pocketcasts": "https://pca.st/d3t43add",
    "rss": "https://wulkane.github.io/shiurim/feeds/parasha.xml"
   },
   "seasons": [
