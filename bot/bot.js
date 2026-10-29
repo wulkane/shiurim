@@ -23,9 +23,9 @@ function announcement(topic, date) {
 📖 *נושא השיעור השבוע:* ${topic}`;
 }
 
-// a text message is the lesson topic; an optional second line is the date
+// a text message is the lesson topic; the day and place stay fixed
 async function announce(env, chat, text) {
-  const [topic, date = ''] = text.split(/\n/).map(l => l.trim()).filter(Boolean);
+  const topic = text.trim(), date = '';
   const link = `${SITE}modaa.html?topic=${encodeURIComponent(topic)}&date=${encodeURIComponent(date)}`;
   await send(env, chat, 'הנה הנוסח להודעה, אפשר להעתיק אותו כמו שהוא:');
   await send(env, chat, announcement(topic, date));
@@ -41,7 +41,7 @@ async function handle(env, msg) {
   if (from !== owner) return;
   const text = (msg.text || '').trim();
   if (!text || text.startsWith('/')) {
-    return send(env, msg.chat.id, 'שלח לי את נושא השיעור ואכין את המודעה. בשורה שנייה אפשר לכתוב תאריך, למשל: יום חמישי, כ״ט בתשרי.');
+    return send(env, msg.chat.id, 'שלח לי את נושא השיעור ואכין את המודעה.');
   }
   await announce(env, msg.chat.id, text);
 }
