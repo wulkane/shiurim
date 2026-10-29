@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מודעת שיעור שבועי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#17436b; --muted:#4f6f8a; --bg:#eef7fb; --card:#ffffff; --accent:#f08a24; --line:#d3e6ef; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#e6f3fb; --muted:#9db8cb; --bg:#0f2433; --card:#16344a; --line:#27506d; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Rubik',Arial,sans-serif; background:var(--bg); color:var(--ink); }
+  .wrap { max-width:1100px; margin:0 auto; padding:24px 16px 48px; display:grid; gap:24px; grid-template-columns:minmax(0,1fr); }
+  @media (min-width:900px) { .wrap { grid-template-columns:340px minmax(0,1fr); align-items:start; } }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; display:grid; gap:14px; }
+  h1 { font-size:20px; margin:0; }
+  label { font-weight:700; font-size:14px; display:block; margin-bottom:6px; }
+  input, textarea { width:100%; font:inherit; font-size:16px; padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:transparent; color:var(--ink); }
+  textarea { resize:vertical; min-height:70px; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; }
+  button { font:inherit; font-weight:700; font-size:15px; padding:11px 16px; border-radius:10px; border:0; cursor:pointer; background:var(--accent); color:#fff; flex:1; }
+  button.alt { background:#1f7fa8; }
+  button.ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
+  .hint { font-size:13px; color:var(--muted); margin:0; }
+  .preview { display:flex; justify-content:center; }
+  canvas { width:100%; max-width:540px; height:auto; border-radius:14px; box-shadow:0 8px 30px rgba(23,67,107,.18); }
+  .toast { font-size:14px; color:#1b8a5a; min-height:20px; margin:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="panel">
+    <h1>עדכון המודעה</h1>
+    <div>
+      <label for="topic">📖 נושא השיעור השבוע</label>
+      <textarea id="topic" placeholder="למשל: מהי אמונה פשוטה?"></textarea>
+    </div>
+    <div>
+      <label for="date">תאריך (לא חובה)</label>
+      <input id="date" placeholder="למשל: יום חמישי, כ״ט בתשרי">
+    </div>
+    <div class="row">
+      <button id="dl">הורדת תמונה</button>
+      <button id="share" class="alt">שיתוף</button>
+    </div>
+    <button id="copy" class="ghost">העתקת הטקסט להודעה</button>
+    <p class="toast" id="toast" role="status"></p>
+    <p class="hint">הנושא והתאריך נשמרים בדפדפן. בכל שבוע מחליפים את הנושא, מורידים את התמונה ושולחים בוואטסאפ.</p>
+  </div>
+  <div class="preview"><canvas id="c" width="1080" height="1350"></canvas></div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const cv = $('c'), ctx = cv.getContext('2d');
+const W = 1080, H = 1350, FONT = "Rubik, Arial, sans-serif";
+const DEFAULT_TOPIC = 'הנושא יפורסם בקרוב';
+
+function load(k, d){ try { return localStorage.getItem(k) ?? d; } catch(e){ return d; } }
+function save(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+
+function rr(x,y,w,h,r){ ctx.beginPath(); ctx.roundRect(x,y,w,h,r); }
+
+function wrap(text, maxW){
+  const out = [];
+  for (const para of text.split('\n')) {
+    let line = '';
+    for (const word of para.split(/\s+/).filter(Boolean)) {
+      const t = line ? line + ' ' + word : word;
+      if (ctx.measureText(t).width > maxW && line) { out.push(line); line = word; } else line = t;
+    }
+    out.push(line);
+  }
+  return out;
+}
+
+function cloud(x,y,k,a){
+  ctx.fillStyle = `rgba(255,255,255,${a})`; ctx.beginPath();
+  [[0,0,50],[55,-22,62],[120,0,52],[60,12,56]].forEach(([dx,dy,r]) => { ctx.moveTo(x+dx*k+r*k,y+dy*k); ctx.arc(x+dx*k,y+dy*k,r*k,0,7); });
+  ctx.fill();
+}
+function leaf(x,y,ang,len,w,c){
+  ctx.save(); ctx.translate(x,y); ctx.rotate(ang); ctx.fillStyle = c; ctx.beginPath();
+  ctx.moveTo(0,0); ctx.quadraticCurveTo(len*.5,-w,len,0); ctx.quadraticCurveTo(len*.5,w,0,0); ctx.fill(); ctx.restore();
+}
+function branch(x,y,dirx,c1,c2){
+  // curved stem with leaves, growing from (x,y)
+  ctx.save(); ctx.translate(x,y); ctx.scale(.5,.5); x = 0; y = 0;
+  ctx.strokeStyle = c1; ctx.lineWidth = 9; ctx.lineCap = 'round';
+  const pts = [[0,0],[dirx*60,-110],[dirx*90,-230],[dirx*85,-350]];
+  ctx.beginPath(); ctx.moveTo(x,y); ctx.bezierCurveTo(x+dirx*70,y-80,x+dirx*110,y-220,x+dirx*85,y-350); ctx.stroke();
+  const leaves = [[.12,-1,0],[.2,1,1],[.34,-1,1],[.44,1,0],[.58,-1,0],[.68,1,1],[.82,-1,1],[.92,1,0]];
+  leaves.forEach(([t,side,alt]) => {
+    const u = 1-t, bx = u*u*u*0 + 3*u*u*t*dirx*70 + 3*u*t*t*dirx*110 + t*t*t*dirx*85;
+    const by = 3*u*u*t*-80 + 3*u*t*t*-220 + t*t*t*-350;
+    leaf(x+bx, y+by, -Math.PI/2 + side*dirx*0.9 + (dirx<0?Math.PI:0)*0, 70 - t*20, 18, alt ? c2 : c1);
+  });
+  leaf(x+dirx*85, y-350, -Math.PI/2, 62, 16, c2);
+  ctx.restore();
+}
+function wave(y0,amp,ph,color){
+  ctx.fillStyle = color; ctx.beginPath(); ctx.moveTo(0,H);
+  for (let x=0;x<=W;x+=20) ctx.lineTo(x, y0 + Math.sin(x/W*Math.PI*2 + ph)*amp);
+  ctx.lineTo(W,H); ctx.closePath(); ctx.fill();
+}
+function dots(){
+  [[50,520,7,'#f4a259'],[1030,470,9,'#7cc8c8'],[45,900,8,'#8ec3ea'],[1035,830,7,'#f4a259'],[1040,300,6,'#fff'],[50,330,6,'#fff'],[1030,640,6,'#fff']]
+    .forEach(([x,y,r,c]) => { ctx.fillStyle=c; ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill(); });
+}
+
+function icon(name,cx,cy){
+  ctx.save(); ctx.translate(cx,cy); ctx.strokeStyle = '#fff'; ctx.fillStyle = '#fff'; ctx.lineWidth = 4.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  if (name === 'cal') {
+    rr(-22,-18,44,40,9); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-22,-5); ctx.lineTo(22,-5); ctx.moveTo(-11,-26); ctx.lineTo(-11,-14); ctx.moveTo(11,-26); ctx.lineTo(11,-14); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0,9,3.5,0,7); ctx.fill();
+  } else if (name === 'pin') {
+    ctx.beginPath(); ctx.moveTo(0,26); ctx.bezierCurveTo(-26,2,-22,-26,0,-26); ctx.bezierCurveTo(22,-26,26,2,0,26); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0,-8,7,0,7); ctx.stroke();
+  } else {
+    ctx.beginPath(); ctx.moveTo(0,-14); ctx.quadraticCurveTo(-14,-22,-26,-16); ctx.lineTo(-26,16); ctx.quadraticCurveTo(-14,10,0,18); ctx.quadraticCurveTo(14,10,26,16); ctx.lineTo(26,-16); ctx.quadraticCurveTo(14,-22,0,-14); ctx.moveTo(0,-14); ctx.lineTo(0,18); ctx.stroke();
+  }
+  ctx.restore();
+}
+function draw(){
+  ctx.direction = 'rtl'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  const INK = '#1d4e7a';
+
+  // soft sky
+  let g = ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#e4f3f8'); g.addColorStop(.6,'#eaf6f6'); g.addColorStop(1,'#fdf3e6');
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  // waves at the bottom
+  wave(1210,26,0.5,'#bfe3ea'); wave(1250,24,2.4,'#8fcfcf'); wave(1295,20,4.2,'#5fb5bd');
+  // branches in the bottom corners
+  branch(40,1300,1,'#3f9aa3','#6cc0b6'); branch(W-40,1300,-1,'#3f9aa3','#6cc0b6');
+
+  // header
+  ctx.fillStyle = INK; ctx.font = `500 24px ${FONT}`; ctx.textAlign = 'right';
+  ctx.fillText('בס"ד', W - 60, 70); ctx.textAlign = 'center';
+  ctx.fillStyle = '#e07b1f'; ctx.font = `600 36px ${FONT}`;
+  ctx.fillText('שיעור שבועי', W/2, 150);
+  ctx.fillStyle = INK; ctx.font = `800 98px ${FONT}`;
+  ctx.fillText('סוגיות באמונה', W/2, 260);
+  ctx.fillText('ועבודת ה׳', W/2, 366);
+  ctx.fillStyle = '#f0993f'; rr(W/2-60,394,120,6,3); ctx.fill();
+
+  // description
+  ctx.fillStyle = '#35607f'; ctx.font = `400 34px ${FONT}`;
+  let y = 466;
+  for (const l of wrap('שיעור שבועי קצר של כ־15 דקות עם אלעד וולקן. נעסוק בנושאים יסודיים ורלוונטיים באמונה ובעבודת ה׳, הנוגעים לכל אחד מאיתנו.', 820)) { ctx.fillText(l, W/2, y); y += 52; }
+
+  // info cards: very round, soft
+  const cardX = 90, cardW = W - 180;
+  function infoCard(emoji, label, line1, line2, top, color){
+    const h = 140;
+    ctx.save(); ctx.shadowColor = 'rgba(29,78,122,.12)'; ctx.shadowBlur = 20; ctx.shadowOffsetY = 6;
+    ctx.fillStyle = 'rgba(255,255,255,.95)'; rr(cardX, top, cardW, h, 70); ctx.fill(); ctx.restore();
+    const cx = cardX + cardW - 76, cy = top + h/2;
+    ctx.fillStyle = color; ctx.beginPath(); ctx.arc(cx, cy, 50, 0, 7); ctx.fill();
+    icon(emoji, cx, cy);
+    ctx.textAlign = 'right'; const tx = cx - 74;
+    ctx.fillStyle = color; ctx.font = `600 26px ${FONT}`; ctx.fillText(label, tx, top + 46);
+    ctx.fillStyle = INK; ctx.font = `600 38px ${FONT}`; ctx.fillText(line1, tx, top + 90);
+    ctx.fillStyle = '#5d7d96'; ctx.font = `400 28px ${FONT}`; ctx.fillText(line2, tx, top + 124);
+    ctx.textAlign = 'center';
+    return top + h;
+  }
+  const when = $('date').value.trim();
+  y = 640;
+  y = infoCard('cal','מתי?', when || 'ימי חמישי בערב, בשעה 20:40', when ? 'בשעה 20:40, מיד לאחר תפילת ערבית' : 'מיד לאחר תפילת ערבית', y, '#35a7ab') + 24;
+  y = infoCard('pin','איפה?','בית הכנסת הקהילתי','שרה אהרונסון 24, גדרה', y, '#4a90d0') + 30;
+
+  // topic card
+  const topic = $('topic').value.trim() || DEFAULT_TOPIC;
+  let size = 58, lines;
+  do { ctx.font = `800 ${size}px ${FONT}`; lines = wrap(topic, cardW - 140); size -= 3; } while (lines.length > 3 && size > 30);
+  size += 3; ctx.font = `800 ${size}px ${FONT}`; lines = wrap(topic, cardW - 140);
+  const lh = size * 1.3, th = 100 + lines.length * lh + 26;
+  const top = y;
+  ctx.save(); ctx.shadowColor = 'rgba(224,123,31,.3)'; ctx.shadowBlur = 22; ctx.shadowOffsetY = 8;
+  ctx.fillStyle = '#f4a259'; rr(cardX - 10, top, cardW + 20, th, Math.min(80, th/2)); ctx.fill(); ctx.restore();
+  ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.font = `600 30px ${FONT}`;
+  ctx.fillText('נושא השיעור השבוע', W/2, top + 58);
+  ctx.fillStyle = '#fff'; ctx.font = `800 ${size}px ${FONT}`;
+  lines.forEach((l,i) => ctx.fillText(l, W/2, top + 118 + size*0.7 + i*lh - 10));
+
+  // footer sits on the waves
+  ctx.fillStyle = '#12405f'; ctx.font = `600 34px ${FONT}`;
+  ctx.fillText('מוזמנים להצטרף!', W/2, H - 38);
+}
+
+function render(){ draw(); }
+async function init(){
+  const q = new URLSearchParams(location.search);
+  $('topic').value = q.has('topic') ? q.get('topic') : load('topic','');
+  $('date').value = q.has('topic') ? (q.get('date') || '') : load('date','');
+  try { await Promise.all([400,500,600,800].map(w => document.fonts.load(`${w} 40px Rubik`, 'אבג'))); } catch(e){}
+  render();
+}
+['topic','date'].forEach(id => $(id).addEventListener('input', () => { save(id, $(id).value); render(); }));
+
+const toast = m => { $('toast').textContent = m; setTimeout(() => $('toast').textContent = '', 3500); };
+const blob = () => new Promise(r => cv.toBlob(r, 'image/png'));
+
+$('dl').onclick = async () => {
+  const a = document.createElement('a'); a.href = URL.createObjectURL(await blob());
+  a.download = 'שיעור-שבועי.png'; a.click(); toast('התמונה ירדה למחשב');
+};
+$('share').onclick = async () => {
+  const f = new File([await blob()], 'שיעור-שבועי.png', {type:'image/png'});
+  if (navigator.canShare && navigator.canShare({files:[f]})) { try { await navigator.share({files:[f], text: msg()}); } catch(e){} }
+  else toast('השיתוף לא נתמך כאן – השתמשו בהורדת תמונה');
+};
+function msg(){
+  const t = $('topic').value.trim() || DEFAULT_TOPIC, d = $('date').value.trim();
+  return `בס"ד\n✨ *סוגיות באמונה ועבודת ה'* ✨\nשיעור שבועי קצר של כ־15 דקות עם אלעד וולקן.\n\n🗓️ *מתי?* ${d ? d + ', בשעה 20:40' : 'ימי חמישי בערב, בשעה 20:40'} (מיד לאחר תפילת ערבית)\n📍 *איפה?* בית הכנסת הקהילתי (שרה אהרונסון 24, גדרה)\n📖 *נושא השיעור השבוע:* ${t}`;
+}
+$('copy').onclick = async () => { try { await navigator.clipboard.writeText(msg()); toast('הטקסט הועתק'); } catch(e){ toast('ההעתקה נכשלה'); } };
+
+init();
+</script>
+</body>
+</html>
