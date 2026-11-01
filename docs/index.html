@@ -92,10 +92,10 @@
   .lm { margin-top:6px; font-size:13.5px; color:var(--muted); display:flex; gap:14px; flex-wrap:wrap; }
   .share { border:1px solid var(--line); background:transparent; color:var(--ink); border-radius:999px; padding:6px 12px; font:inherit; font-size:14px; cursor:pointer; }
   .share:hover { border-color:var(--gold); }
-  .actions { display:flex; flex-direction:column; gap:8px; align-items:stretch; }
-  .apps { grid-column:1 / -1; display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:2px 0 0 56px; }
-  .apps .plat { font-size:14px; padding:6px 12px; }
-  .apps .note { flex-basis:100%; margin:0; font-size:13px; color:var(--muted); }
+  .apps { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:10px; }
+  .apps .lbl { font-size:13.5px; color:var(--muted); margin-inline-end:2px; }
+  .apps .plat { font-size:13.5px; padding:4px 11px; gap:6px; }
+  .apps .plat .dot { width:7px; height:7px; }
   .empty { padding:30px; text-align:center; color:var(--muted); }
 
   .player { position:fixed; inset:auto 0 0 0; background:var(--hero); color:var(--hero-ink); padding:10px 16px calc(10px + env(safe-area-inset-bottom)); display:none; box-shadow:0 -8px 24px rgba(0,0,0,.18); z-index:4; }
@@ -191,10 +191,9 @@ function render(){
         return `<li class="lesson" id="${l.id}" data-text="${esc(norm([l.title, l.desc, s.name, pod.name].join(' ')))}">
           <button class="play" data-play="${l.id}" aria-label="השמעה: ${esc(l.title)}">${ICON_PLAY}</button>
           <div><p class="lt">${esc(l.title)}</p>${l.desc ? `<p class="ld">${esc(l.desc)}</p>` : ''}
-            <div class="lm"><span>${mins(l.dur)}</span><span>${esc(l.date)}</span></div></div>
-          <div class="actions"><button class="share" data-share="${l.id}" aria-label="שיתוף השיעור">שיתוף</button>
-            ${apps ? `<button class="share" data-apps="${l.id}" aria-expanded="false" aria-label="האזנה באפליקציות">באפליקציות</button>` : ''}</div>
-          ${apps ? `<div class="apps" hidden>${apps}<p class="note">נפתח בעמוד הפודקאסט באפליקציה, ושם השיעור.</p></div>` : ''}</li>`;
+            <div class="lm"><span>${mins(l.dur)}</span><span>${esc(l.date)}</span></div>
+            ${apps ? `<div class="apps"><span class="lbl">גם באפליקציה:</span>${apps}</div>` : ''}</div>
+          <button class="share" data-share="${l.id}" aria-label="שיתוף השיעור">שיתוף</button></li>`;
       }).join('');
       return `<details class="season"${pod.seasons.length === 1 ? ' open' : ''}>
         <summary><span class="sn">${esc(s.name || 'כל השיעורים')}</span><span class="count">${s.lessons.length} שיעורים</span></summary>
@@ -279,12 +278,6 @@ document.addEventListener('click', async e => {
     const l = lessons[s.dataset.share], url = location.href.split('#')[0] + '#' + l.id;
     if (navigator.share) { try { await navigator.share({title: l.title, text: `${l.title} · שיעורי תורה, אלעד וולקן`, url}); } catch(e){} }
     else copy(url, 'הקישור לשיעור הועתק');
-    return;
-  }
-  const a = e.target.closest('[data-apps]');
-  if (a) {
-    const row = a.closest('li').querySelector('.apps');
-    row.hidden = !row.hidden; a.setAttribute('aria-expanded', String(!row.hidden));
     return;
   }
   const r = e.target.closest('[data-rss]');
