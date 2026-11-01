@@ -10,3 +10,4 @@ node_modules/
 data/uploaded.json
 *.url
 אמתואמונה_TrendsChart*.csv
+data/spotify_api.json
