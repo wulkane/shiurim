@@ -21,6 +21,20 @@
     <itunes:type>episodic</itunes:type>
     <podcast:locked>no</podcast:locked>
     <item>
+      <title><![CDATA[תפילה (2)- מבנה ומהלך תפילת העמידה]]></title>
+      <description><![CDATA[התבוננות במהלך ובמגמת תפילת העמידה- בבקשת הגאולה על עם ישראל]]></description>
+      <link>https://wulkane.github.io/shiurim/#lbc718d</link>
+      <guid isPermaLink="false">shiurim-lbc718d</guid>
+      <pubDate>Sun, 01 Nov 2026 08:34:00 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lbc718d.m4a" length="19207605" type="audio/x-m4a"/>
+      <itunes:duration>1177</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="תפילה">5</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
       <title><![CDATA[תפילה (1)- יסודות התפילה]]></title>
       <description><![CDATA[התבוננות במהותה של התפילה ובשני המימדים שהיא כוללת]]></description>
       <link>https://wulkane.github.io/shiurim/#l683444</link>
