@@ -68,13 +68,15 @@ async function loadSeasons(podKey) {
   return [...new Set((await loadPod(podKey)).seasons.map(s => s.name))];
 }
 
-// the message to copy for a WhatsApp status or group: the lesson page and every platform that has the podcast
-async function shareMessage(podKey, title, desc, lid) {
+// buttons that open the lesson on the site and the podcast on every platform that has it
+async function listenButtons(podKey, lid, card) {
   const links = (await loadPod(podKey)).links;
-  return [`🎧 שיעור חדש: ${title}`, desc, '', `האזנה באתר: ${SITE}#${lid}`,
-    ...PLATFORMS.filter(([k]) => links[k]).map(([k, label]) => `${label}: ${links[k]}`)].join('\n');
+  const buttons = [{ text: 'האזנה באתר', url: `${SITE}#${lid}` },
+    ...PLATFORMS.filter(([k]) => links[k]).map(([k, label]) => ({ text: label, url: links[k] }))];
+  const rows = [];
+  for (let i = 0; i < buttons.length; i += 2) rows.push(buttons.slice(i, i + 2));
+  return { inline_keyboard: [[{ text: 'פתיחת התמונה לסטטוס', url: card }], ...rows] };
 }
-
 async function confirmation(env, chat, st) {
   st.stage = 'confirm';
   await setState(env, chat, st);
@@ -292,10 +294,8 @@ async function finish(env, chat, st, lid) {
     await setState(env, chat, null);
     await say(env, chat, '✅ פורסם! ההקלטה בענן, בפיד ובאתר. אפליקציות הפודקאסטים יקלטו אותה בדרך כלל תוך דקות עד כמה שעות, והאתר יתעדכן בתוך דקה או שתיים.');
     const card = `${site}status.html?title=${encodeURIComponent(title)}&pod=${encodeURIComponent(podName)}&desc=${encodeURIComponent(desc)}`;
-    await say(env, chat, 'התמונה לסטטוס מוכנה. בדף שייפתח לוחצים „שיתוף לוואטסאפ”. אם וואטסאפ לא מופיע ברשימה, לוחצים „הורדת תמונה”, ואז בוואטסאפ: סטטוס ← הוספה מהגלריה, ומדביקים את ההודעה שבאה אחרי זה ככיתוב:',
-      { inline_keyboard: [[{ text: 'פתיחת התמונה לסטטוס', url: card }]] });
-    await say(env, chat, await shareMessage(st.pod, title, desc, lid));
-    await say(env, chat, 'את ההודעה שמעל מדביקים ככיתוב לתמונה. הקישור לאתר פותח את השיעור עצמו מיד. הקישורים לפלטפורמות פותחים את השיעור או את עמוד הפודקאסט, והם יעבדו במלואם כשהפלטפורמה תקלוט את השיעור, בדרך כלל תוך כמה שעות.');
+    await say(env, chat, `🎧 שיעור חדש: ${title}\n${desc}`, await listenButtons(st.pod, lid, card));
+    await say(env, chat, 'לסטטוס: לוחצים על „פתיחת התמונה לסטטוס”, שם „שיתוף לוואטסאפ”, ואם וואטסאפ לא מופיע, „הורדת תמונה” ואז בוואטסאפ: סטטוס ← הוספה מהגלריה. כל כפתור אחר פותח את השיעור באפליקציה שלו, ומשם משתפים. הכפתורים של הפלטפורמות פותחים את עמוד הפודקאסט, והשיעור עצמו יופיע שם בדרך כלל תוך כמה שעות.');
   } catch (e) {
     // nothing was committed before the catalog step, so publishing can simply be tried again
     const safe = step === 'קריאת הקטלוג';
