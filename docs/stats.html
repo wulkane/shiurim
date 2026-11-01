@@ -61,7 +61,7 @@
 <body>
 <header class="wrap">
   <h1>נתוני האזנה</h1>
-  <p class="sub">כמה האזנות היו לכל שיעור, ובאיזו אפליקציה. אנונימי: אין שמות ואין כתובות.</p>
+  <p class="sub">כמה האזנות היו לכל שיעור, ומאיפה: ספוטיפיי, יוטיוב, אפליקציות פודקאסט או האתר. אנונימי: אין שמות ואין כתובות.</p>
   <div class="bar" id="bar"></div>
   <input id="find" class="find" type="search" placeholder="חיפוש שיעור לפי שם" aria-label="חיפוש שיעור">
 </header>
@@ -84,11 +84,16 @@ const lessonInfo = {};
 (window.DATA || []).forEach(p => p.seasons.forEach(s => s.lessons.forEach(l =>
   lessonInfo[l.id] = { title: l.title, pod: p.name, season: s.name })));
 
+// where people listen, in four groups; the apps we can tell apart are listed inside "אפליקציות פודקאסט"
+const GROUPS = ['ספוטיפיי', 'יוטיוב', 'אפליקציות פודקאסט', 'האתר', 'אחר'];
+const groupOf = p => p === 'Spotify' ? 'ספוטיפיי' : p === 'YouTube' ? 'יוטיוב' : p === 'האתר' ? 'האתר'
+  : /^(אחר|דפדפן אחר)$/.test(p) ? 'אחר' : 'אפליקציות פודקאסט';
+
 const PERIODS = [[7, '7 ימים'], [30, '30 יום'], [90, '90 יום'], [365, 'שנה'], [0, 'הכול']];
 const plain = s => s.toLowerCase().replace(/["'׳״]/g, '');   // chazal = חז"ל = חז״ל
 let sortBy = 'catalog';               // 'catalog' (in order of the parashot) or 'plays'
 const openKeys = new Set();           // folders left open across redraws
-let days = 0, podFilter = '', data = null;   // "all" by default: it is the only view that includes the Spotify import
+let days = 0, podFilter = '', data = null;   // "all" by default: it is the only view that includes the Spotify and YouTube totals
 
 async function api(path) {
   const r = await fetch(API + path, { headers: { authorization: 'Bearer ' + key } });
@@ -124,7 +129,7 @@ function bars() {
 // A podcast with a single unnamed season (the holidays) lists its lessons directly.
 function folders(per) {
   const sum = list => list.reduce((n, x) => n + x.total, 0);
-  const chips = l => Object.entries(l.plats).sort((a, b) => b[1] - a[1]).map(([p, n]) => `<span>${esc(p)}: ${n}</span>`).join('');
+  const chips = l => GROUPS.filter(g => l.groups[g]).map(g => `<span>${esc(g)}: ${l.groups[g]}</span>`).join('');
   const lessonRow = (l, max) => `<div class="row lesson" data-text="${esc(plain(l.title))}">
       <div class="name">${esc(l.title)}<div class="plats">${chips(l)}</div></div><div class="num">${l.total}</div>
       <div class="track"><i style="width:${l.total / max * 100}%"></i></div></div>`;
@@ -168,16 +173,20 @@ function render() {
   const all = data.byLesson.concat(useImp ? imp.map(r => ({ lesson: r.lesson, platform: r.platform, listeners: r.plays })) : []);
   const rows = all.filter(r => !podFilter || (lessonInfo[r.lesson] || {}).pod === podFilter);
   if (!rows.length) { $('main').innerHTML = '<p class="msg">עדיין אין נתונים לתקופה הזאת.</p>'; return; }
-  const impNote = useImp
-    ? `Spotify: סך כל ההשמעות וההורדות מתחילת הפודקאסט, כפי שיוצאו ב-${impDate}. הוא לא מתעדכן לבד, וצריך לייצא שוב מ-Spotify כדי לרענן.`
-    : (imp.length ? `נתוני Spotify (מיוצאים ב-${impDate}) מוצגים רק בתצוגת „הכול”.` : '');
+  const dateOf = p => { const r = imp.find(x => x.platform === p); return r ? r.as_of.split('-').reverse().join('.') : ''; };
+  const impNote = !imp.length ? '' : useImp
+    ? `ספוטיפיי: סך כל ההשמעות וההורדות מתחילת הפודקאסט, כפי שיוצאו ב-${dateOf('Spotify')}. יוטיוב: סך הצפיות עד ${dateOf('YouTube')}. שניהם לא מתעדכנים לבד, ונרענן אותם מדי פעם.`
+    : 'נתוני ספוטיפיי ויוטיוב הם סכומים מתחילת הדרך, ולכן הם מוצגים רק בתצוגת „הכול”.';
 
-  const per = {};            // lesson -> {total, plats:{name:n}}
-  const plat = {};           // platform -> n
+  const per = {};            // lesson -> {total, groups:{name:n}}
+  const plat = {};           // group -> n
+  const members = {};        // group -> {app: n}
   rows.forEach(r => {
-    const l = per[r.lesson] ||= { total: 0, plats: {} };
-    l.total += r.listeners; l.plats[r.platform] = (l.plats[r.platform] || 0) + r.listeners;
-    plat[r.platform] = (plat[r.platform] || 0) + r.listeners;
+    const g = groupOf(r.platform);
+    const l = per[r.lesson] ||= { total: 0, groups: {} };
+    l.total += r.listeners; l.groups[g] = (l.groups[g] || 0) + r.listeners;
+    plat[g] = (plat[g] || 0) + r.listeners;
+    (members[g] ||= {})[r.platform] = (members[g][r.platform] || 0) + r.listeners;
   });
   const total = Object.values(per).reduce((n, l) => n + l.total, 0);
   const ranked = Object.entries(per).sort((a, b) => b[1].total - a[1].total);
@@ -196,16 +205,19 @@ function render() {
       <div class="card"><div class="n">${total}</div><div class="l">האזנות בתקופה</div></div>
       <div class="card"><div class="n">${ranked.length}</div><div class="l">שיעורים שהושמעו</div></div>
       <div class="card"><div class="n">${top[1].total}</div><div class="l">השיעור המוביל</div><div class="t">${esc(name(top[0]))}</div></div>
-      <div class="card"><div class="n">${topPlat[1]}</div><div class="l">האפליקציה המובילה</div><div class="t">${esc(topPlat[0])}</div></div>
+      <div class="card"><div class="n">${topPlat[1]}</div><div class="l">המקור המוביל</div><div class="t">${esc(topPlat[0])}</div></div>
     </div>
     <h2>לפי יום</h2>
     <div class="panel"><div class="days">${series.map(n => `<i style="height:${Math.max(n / maxD * 100, 2)}%" title="${n}"></i>`).join('')}</div></div>
-    <h2>לפי אפליקציה</h2>
-    <div class="panel">${Object.entries(plat).sort((a, b) => b[1] - a[1]).map(([p, n]) =>
-      `<div class="row"><div class="name">${esc(p)}</div><div class="num">${n}</div><div class="track"><i style="width:${n / maxP * 100}%"></i></div></div>`).join('')}</div>
+    <h2>מאיפה שומעים</h2>
+    <div class="panel">${GROUPS.filter(g => plat[g]).map(g => {
+      const n = plat[g], apps = Object.entries(members[g]).sort((a, b) => b[1] - a[1]);
+      const detail = g === 'אפליקציות פודקאסט' && apps.length ? `<small>${apps.map(([p, c]) => `${esc(p)}: ${c}`).join(' · ')}</small>` : '';
+      return `<div class="row"><div class="name">${esc(g)}${detail}</div><div class="num">${n} <small style="font-weight:400;color:var(--muted)">${Math.round(n / total * 100)}%</small></div><div class="track"><i style="width:${n / maxP * 100}%"></i></div></div>`;
+    }).join('')}</div>
     <h2>לפי פודקאסט ונושא</h2>
     ${folders(per)}
-    <p class="note">האתר ורוב אפליקציות הפודקאסטים נספרים בשרת שלנו: האזנה אחת לכל מאזין ביום לכל שיעור.${impNote ? '<br>' + esc(impNote) : ''}<br>ההאזנות ב-YouTube נמצאות בלוח הנתונים של YouTube, ולא כאן.</p>`;
+    <p class="note">האתר ואפליקציות הפודקאסטים נספרים בשרת שלנו: האזנה אחת לכל מאזין ביום לכל שיעור. ספוטיפיי ויוטיוב מנגנים עותק משלהם, ולכן המספרים שלהם נלקחים מהם ואינם באותו אופן ספירה.${impNote ? '<br>' + esc(impNote) : ''}</p>`;
   applyFind();
 }
 
