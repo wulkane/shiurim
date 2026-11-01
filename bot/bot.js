@@ -56,8 +56,6 @@ function parseDuration(text) {
   return p.length === 1 ? p[0] * 60 : p.reduce((s, v) => s * 60 + v, 0);
 }
 
-const PLATFORMS = [['spotify', 'ספוטיפיי'], ['youtube', 'יוטיוב'], ['pocketcasts', 'Pocket Casts']];
-
 async function loadPod(podKey) {
   const r = await fetch(SITE + 'data.js', { cf: { cacheTtl: 0 } });
   const data = JSON.parse((await r.text()).replace(/^window\.DATA = /, '').replace(/;\s*$/, ''));
@@ -68,15 +66,6 @@ async function loadSeasons(podKey) {
   return [...new Set((await loadPod(podKey)).seasons.map(s => s.name))];
 }
 
-// buttons that open the lesson on the site and the podcast on every platform that has it
-async function listenButtons(podKey, lid, card) {
-  const links = (await loadPod(podKey)).links;
-  const buttons = [{ text: 'האזנה באתר', url: `${SITE}#${lid}` },
-    ...PLATFORMS.filter(([k]) => links[k]).map(([k, label]) => ({ text: label, url: links[k] }))];
-  const rows = [];
-  for (let i = 0; i < buttons.length; i += 2) rows.push(buttons.slice(i, i + 2));
-  return { inline_keyboard: [[{ text: 'פתיחת התמונה לסטטוס', url: card }], ...rows] };
-}
 async function confirmation(env, chat, st) {
   st.stage = 'confirm';
   await setState(env, chat, st);
@@ -294,8 +283,13 @@ async function finish(env, chat, st, lid) {
     await setState(env, chat, null);
     await say(env, chat, '✅ פורסם! ההקלטה בענן, בפיד ובאתר. אפליקציות הפודקאסטים יקלטו אותה בדרך כלל תוך דקות עד כמה שעות, והאתר יתעדכן בתוך דקה או שתיים.');
     const card = `${site}status.html?title=${encodeURIComponent(title)}&pod=${encodeURIComponent(podName)}&desc=${encodeURIComponent(desc)}`;
-    await say(env, chat, `🎧 שיעור חדש: ${title}\n${desc}`, await listenButtons(st.pod, lid, card));
-    await say(env, chat, 'לסטטוס: לוחצים על „פתיחת התמונה לסטטוס”, שם „שיתוף לוואטסאפ”, ואם וואטסאפ לא מופיע, „הורדת תמונה” ואז בוואטסאפ: סטטוס ← הוספה מהגלריה. כל כפתור אחר פותח את השיעור באפליקציה שלו, ומשם משתפים. הכפתורים של הפלטפורמות פותחים את עמוד הפודקאסט, והשיעור עצמו יופיע שם בדרך כלל תוך כמה שעות.');
+    // the lesson name is a link to its place on the site, where every platform is listed under the lesson
+    const html = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    await tg(env, 'sendMessage', {
+      chat_id: chat, parse_mode: 'HTML', link_preview_options: { is_disabled: true },
+      text: `🎧 <a href="${site}#${lid}">${html(title)}</a>\n${html(desc)}`,
+      reply_markup: { inline_keyboard: [[{ text: 'פתיחת התמונה לסטטוס', url: card }]] },
+    });
   } catch (e) {
     // nothing was committed before the catalog step, so publishing can simply be tried again
     const safe = step === 'קריאת הקטלוג';
