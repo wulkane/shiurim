@@ -41,7 +41,8 @@ jobs:
         run: |
           curl -fsS -X PUT -H "Authorization: Bearer $KEY" --data-binary "@cleaned$EXT" "$MEDIA/admin/audio/$LID$EXT"
       - name: Delete the original copy
-        run: curl -fsS -X DELETE -H "Authorization: Bearer $KEY" "$MEDIA/admin/raw/$LID$EXT"
+        run: |
+          curl -fsS -X DELETE -H "Authorization: Bearer $KEY" "$MEDIA/admin/raw/$LID$EXT"
       - name: Tell the bot
         run: |
           curl -fsS -X POST -H "x-pipeline-key: $KEY" -H "content-type: application/json" \
