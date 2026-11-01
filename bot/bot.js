@@ -2,7 +2,7 @@
 //  - a text message is the topic of the coming lesson: the bot replies with a link to the announcement image
 //  - an audio file is a new recording: the bot asks for its title, one sentence, podcast and season, then
 //    stores it in R2 and adds it to the catalog, the site and the podcast feed
-import { PODCASTS, CATALOG_PATH, lessonId, seasonOf, parseCsv, csvLine, feedItem, hms, MIME, Repo } from './lib.js';
+import { PODCASTS, CATALOG_PATH, lessonId, seasonOf, parseCsv, csvLine, feedItem, sharePage, hms, MIME, Repo } from './lib.js';
 
 const SITE = 'https://wulkane.github.io/shiurim/';
 const MAX_BYTES = 20 * 1024 * 1024;   // the most a bot can download from Telegram
@@ -270,6 +270,10 @@ async function finish(env, chat, st, lid) {
     block.lessons.push({ id: lid, title, desc, date: ilDate(now), dur: hms(st.file.seconds), audio: `${media}audio/${lid}${ext}` });
     await repo.write('docs/data.js', 'window.DATA = ' + JSON.stringify(data, null, 1) + ';\n', dataJs.sha, `Site: add lesson ${title}`);
 
+    step = 'עדכון דף השיתוף';
+    // the page a link to this lesson points at: it carries the lesson's name and sentence for chat previews
+    await repo.write(`docs/l/${lid}.html`, sharePage({ site, lid, title, desc, image: `${site}og/${st.pod}.jpg` }), undefined, `Share page: ${title}`);
+
     step = 'עדכון הפיד';
     const feedPath = `docs/feeds/${st.pod}.xml`;
     const feed = await repo.read(feedPath);
@@ -287,7 +291,7 @@ async function finish(env, chat, st, lid) {
     const html = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     await tg(env, 'sendMessage', {
       chat_id: chat, parse_mode: 'HTML', link_preview_options: { is_disabled: true },
-      text: `🎧 <a href="${site}#${lid}">${html(title)}</a>\n${html(desc)}`,
+      text: `🎧 <a href="${site}l/${lid}">${html(title)}</a>\n${html(desc)}`,
       reply_markup: { inline_keyboard: [[{ text: 'פתיחת התמונה לסטטוס', url: card }]] },
     });
   } catch (e) {

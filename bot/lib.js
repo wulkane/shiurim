@@ -143,3 +143,30 @@ export class Repo {
     if (!r.ok) throw new Error(`GitHub write ${path}: ${r.status} ${(await r.text()).slice(0, 200)}`);
   }
 }
+
+// ---- the page a link to one lesson points at (same text as share_page in scripts/build_site.py) ----
+const attr = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+
+export function sharePage({ site, lid, title, desc, image }) {
+  const [t, d, i] = [title, desc, image].map(attr);
+  return `<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${t}</title>
+<meta name="description" content="${d}">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="${t}">
+<meta property="og:description" content="${d}">
+<meta property="og:image" content="${i}">
+<meta property="og:url" content="${site}l/${lid}">
+<meta name="twitter:card" content="summary">
+<meta http-equiv="refresh" content="0;url=../#${lid}">
+<script>location.replace('../#${lid}');</script>
+</head>
+<body><p><a href="../#${lid}">${t}</a></p></body>
+</html>
+`;
+}
