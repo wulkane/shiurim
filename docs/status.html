@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>תמונה לסטטוס</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;500;600;700&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f4ede1; --card:#fbf7f0; --ink:#2f2219; --muted:#76604b; --line:#e2d3bc; --accent:#8a5a2b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1b1510; --card:#241c15; --ink:#f1e7d8; --muted:#b9a48a; --line:#3e3125; --accent:#d09a5c; } }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Assistant',Arial,sans-serif; background:var(--bg); color:var(--ink); }
+  .wrap { max-width:520px; margin:0 auto; padding:20px 16px 40px; display:grid; gap:16px; }
+  canvas { width:100%; height:auto; border-radius:14px; box-shadow:0 8px 30px rgba(47,34,25,.25); }
+  .row { display:flex; gap:10px; }
+  button { flex:1; font:inherit; font-weight:700; font-size:16px; padding:12px 16px; border-radius:12px; border:0; cursor:pointer; background:var(--accent); color:#fff; }
+  button.ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
+  p { margin:0; color:var(--muted); font-size:14px; text-align:center; min-height:20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div class="row"><button id="share">שיתוף לוואטסאפ</button><button id="dl" class="ghost">הורדת תמונה</button></div>
+  <p id="toast" role="status"></p>
+</div>
+<script>
+// the address carries the lesson: status.html?title=...&pod=...&desc=...
+const q = new URLSearchParams(location.search);
+const title = q.get('title') || 'שיעור חדש', pod = q.get('pod') || '', desc = q.get('desc') || '';
+const $ = id => document.getElementById(id);
+const cv = $('c'), ctx = cv.getContext('2d');
+const W = 1080, H = 1920, SERIF = "'Noto Serif Hebrew', serif", SANS = "'Assistant', Arial, sans-serif";
+
+function wrap(text, maxW) {
+  const out = []; let line = '';
+  for (const word of text.split(/\s+/).filter(Boolean)) {
+    const t = line ? line + ' ' + word : word;
+    if (ctx.measureText(t).width > maxW && line) { out.push(line); line = word; } else line = t;
+  }
+  if (line) out.push(line);
+  return out;
+}
+
+function book(cx, cy, s) {   // open book, same line drawing as the site
+  ctx.save(); ctx.translate(cx - 24 * s, cy - 24 * s); ctx.scale(s, s);
+  ctx.strokeStyle = '#d2aa6a'; ctx.lineWidth = 1.6; ctx.lineJoin = 'round';
+  [ 'M24 13c-5-3.5-11-4.5-18-3.5v27c7-1 13 0 18 3.5 5-3.5 11-4.5 18-3.5v-27c-7-1-13 0-18 3.5z',
+    'M24 13v27M10 16c4-.4 7.5.2 10 1.4M10 22c4-.4 7.5.2 10 1.4M10 28c4-.4 7.5.2 10 1.4M38 16c-4-.4-7.5.2-10 1.4M38 22c-4-.4-7.5.2-10 1.4M38 28c-4-.4-7.5.2-10 1.4'
+  ].forEach(d => ctx.stroke(new Path2D(d)));
+  ctx.restore();
+}
+
+function draw() {
+  ctx.direction = 'rtl'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  const g = ctx.createRadialGradient(W * .85, 0, 0, W * .85, 0, H * .9);
+  g.addColorStop(0, '#46321f'); g.addColorStop(.6, '#2f2219'); g.addColorStop(1, '#241a12');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.globalAlpha = .28; book(W / 2, 470, 7); ctx.globalAlpha = 1;
+
+  ctx.fillStyle = '#d2aa6a'; ctx.font = `600 44px ${SANS}`;
+  ctx.fillText('שיעור חדש', W / 2, 160);
+  ctx.fillRect(W / 2 - 60, 190, 120, 4);
+
+  // the title, as it is written in the podcast; shrinks until it fits in five lines
+  let size = 104, lines;
+  do { ctx.font = `600 ${size}px ${SERIF}`; lines = wrap(title, W - 200); size -= 4; } while (lines.length > 5 && size > 52);
+  size += 4;
+  const lh = size * 1.35, top = 820 - (lines.length * lh) / 2;
+  ctx.fillStyle = '#f5ecdc';
+  lines.forEach((l, i) => ctx.fillText(l, W / 2, top + (i + 1) * lh));
+
+  let y = top + lines.length * lh + 100;
+  if (desc) {
+    ctx.fillStyle = '#d6c3a5'; ctx.font = `400 46px ${SANS}`;
+    wrap(desc, W - 240).slice(0, 5).forEach(l => { ctx.fillText(l, W / 2, y); y += 66; });
+  }
+
+  ctx.fillStyle = '#d2aa6a'; ctx.font = `600 42px ${SANS}`;
+  if (pod) ctx.fillText(pod, W / 2, H - 330);
+  ctx.fillStyle = '#f5ecdc'; ctx.font = `600 64px ${SERIF}`;
+  ctx.fillText('שיעורי תורה', W / 2, H - 230);
+  ctx.fillStyle = '#d6c3a5'; ctx.font = `400 42px ${SANS}`;
+  ctx.fillText('אלעד וולקן', W / 2, H - 165);
+  ctx.fillStyle = '#d2aa6a'; ctx.font = `600 38px ${SANS}`;
+  ctx.fillText('הקישורים להאזנה בהודעה שמתחת לתמונה', W / 2, H - 80);
+}
+
+const toast = m => { $('toast').textContent = m; setTimeout(() => $('toast').textContent = '', 3500); };
+const blob = () => new Promise(r => cv.toBlob(r, 'image/png'));
+$('dl').onclick = async () => {
+  const a = document.createElement('a'); a.href = URL.createObjectURL(await blob());
+  a.download = 'שיעור-חדש.png'; a.click(); toast('התמונה ירדה למכשיר');
+};
+$('share').onclick = async () => {
+  const f = new File([await blob()], 'שיעור-חדש.png', { type: 'image/png' });
+  if (navigator.canShare && navigator.canShare({ files: [f] })) { try { await navigator.share({ files: [f] }); } catch (e) {} }
+  else toast('השיתוף לא נתמך כאן, השתמשו בהורדת תמונה');
+};
+
+(async () => {
+  try { await Promise.all([[400, 'Assistant'], [600, 'Assistant'], [600, 'Noto Serif Hebrew']].map(([w, f]) => document.fonts.load(`${w} 40px "${f}"`, 'אבג'))); } catch (e) {}
+  draw();
+})();
+</script>
+</body>
+</html>
