@@ -365,7 +365,8 @@ window.DATA = [
       "dur": "00:14:31",
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/l620036.m4a",
       "links": {
-       "pocketcasts": "https://pca.st/episode/ab62aecf-5552-4d12-a087-6895e314499e"
+       "pocketcasts": "https://pca.st/episode/ab62aecf-5552-4d12-a087-6895e314499e",
+       "youtube": "https://www.youtube.com/watch?v=DqavRuneH6A&list=PLfKYvPMU3wJk"
       }
      },
      {
@@ -376,7 +377,8 @@ window.DATA = [
       "dur": "00:17:29",
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/l5a7d11.m4a",
       "links": {
-       "pocketcasts": "https://pca.st/episode/4d7c3af6-021f-47d2-a27d-80d9ff7d1a6a"
+       "pocketcasts": "https://pca.st/episode/4d7c3af6-021f-47d2-a27d-80d9ff7d1a6a",
+       "youtube": "https://www.youtube.com/watch?v=r-5owrRlLTY&list=PLfKYvPMU3wJk"
       }
      },
      {
@@ -735,7 +737,8 @@ window.DATA = [
       "dur": "00:42:06",
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/lbf1e5d.m4a",
       "links": {
-       "pocketcasts": "https://pca.st/episode/93ac6594-8572-4495-b809-4d0ad5dbfbdf"
+       "pocketcasts": "https://pca.st/episode/93ac6594-8572-4495-b809-4d0ad5dbfbdf",
+       "youtube": "https://www.youtube.com/watch?v=-V3rL9MC8gs&list=PLSTYvhvxkAIk"
       }
      },
      {
@@ -746,7 +749,8 @@ window.DATA = [
       "dur": "00:46:03",
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/lef19fc.m4a",
       "links": {
-       "pocketcasts": "https://pca.st/episode/bc67e7f7-74f5-49cc-b29b-796fdcb45deb"
+       "pocketcasts": "https://pca.st/episode/bc67e7f7-74f5-49cc-b29b-796fdcb45deb",
+       "youtube": "https://www.youtube.com/watch?v=Tnup_spIBpE&list=PLSTYvhvxkAIk"
       }
      },
      {
