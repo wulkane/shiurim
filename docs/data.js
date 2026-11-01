@@ -6,7 +6,6 @@ window.DATA = [
   "about": "עיון בפרשת השבוע מתוך פשט הפסוקים, דברי חז\"ל והמפרשים, והמסרים העולים מהם לחיינו",
   "links": {
    "spotify": "https://open.spotify.com/show/7KKnHKn48V0iwPmTfMdcry",
-   "apple": null,
    "youtube": null,
    "pocketcasts": "https://pca.st/d3t43add",
    "rss": "https://wulkane.github.io/shiurim/feeds/parasha.xml"
@@ -371,7 +370,6 @@ window.DATA = [
   "about": "עיונים ומחשבות על נושאי יסוד באמונה היהודית",
   "links": {
    "spotify": "https://podcasters.spotify.com/pod/show/-25869",
-   "apple": null,
    "youtube": null,
    "pocketcasts": null,
    "rss": "https://wulkane.github.io/shiurim/feeds/emuna.xml"
@@ -642,7 +640,6 @@ window.DATA = [
   ],
   "links": {
    "spotify": "https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6",
-   "apple": null,
    "youtube": null,
    "pocketcasts": "https://pca.st/kf6bl5wi",
    "rss": "https://wulkane.github.io/shiurim/feeds/moadim.xml"

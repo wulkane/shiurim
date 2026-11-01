@@ -56,7 +56,7 @@ function parseDuration(text) {
   return p.length === 1 ? p[0] * 60 : p.reduce((s, v) => s * 60 + v, 0);
 }
 
-const PLATFORMS = [['spotify', 'ספוטיפיי'], ['apple', 'אפל פודקאסטס'], ['youtube', 'יוטיוב'], ['pocketcasts', 'Pocket Casts']];
+const PLATFORMS = [['spotify', 'ספוטיפיי'], ['youtube', 'יוטיוב'], ['pocketcasts', 'Pocket Casts']];
 
 async function loadPod(podKey) {
   const r = await fetch(SITE + 'data.js', { cf: { cacheTtl: 0 } });

@@ -13,18 +13,18 @@ PODCASTS = [
     {
         'name': 'פשט ועומק בפרשת השבוע', 'key': 'parasha', 'icon': 0,
         'about': 'עיון בפרשת השבוע מתוך פשט הפסוקים, דברי חז"ל והמפרשים, והמסרים העולים מהם לחיינו',
-        'links': {'spotify': 'https://open.spotify.com/show/7KKnHKn48V0iwPmTfMdcry', 'apple': None, 'youtube': None, 'pocketcasts': 'https://pca.st/d3t43add'},
+        'links': {'spotify': 'https://open.spotify.com/show/7KKnHKn48V0iwPmTfMdcry', 'youtube': None, 'pocketcasts': 'https://pca.st/d3t43add'},
     },
     {
         'name': 'אמת ואמונה', 'key': 'emuna', 'icon': 1,
         'about': 'עיונים ומחשבות על נושאי יסוד באמונה היהודית',
-        'links': {'spotify': 'https://podcasters.spotify.com/pod/show/-25869', 'apple': None, 'youtube': None, 'pocketcasts': None},
+        'links': {'spotify': 'https://podcasters.spotify.com/pod/show/-25869', 'youtube': None, 'pocketcasts': None},
     },
     {
         'name': 'מועדי ישראל', 'key': 'moadim', 'icon': 2,
         'about': 'מהותם של חגי ישראל ומועדיו לאור פסוקי התורה ודברי חז"ל',
         'topics': ['ראש השנה', 'יום כיפור', 'סוכות', 'חנוכה', 'פורים', 'פסח', 'יום העצמאות', 'בין המצרים'],
-        'links': {'spotify': 'https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6', 'apple': None, 'youtube': None, 'pocketcasts': 'https://pca.st/kf6bl5wi'},
+        'links': {'spotify': 'https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6', 'youtube': None, 'pocketcasts': 'https://pca.st/kf6bl5wi'},
     },
 ]
 POD_BY_NAME = {p['name']: p for p in PODCASTS}
