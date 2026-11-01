@@ -115,6 +115,15 @@ async function press(env, chat, data) {
   if (!st) return;
   if (data === 'no') { await setState(env, chat, null); return say(env, chat, 'בוטל. ההקלטה לא פורסמה.'); }
   if (data === 'ok' && st.stage === 'confirm') return publish(env, chat, st);
+  if (data === 'raw' && st.stage === 'cleanfailed') {
+    const raw = await env.MEDIA.get(`raw/${st.lid}${st.file.ext}`);
+    if (!raw) return say(env, chat, 'ההקלטה המקורית לא נמצאה בענן. שלח אותה שוב.');
+    await env.MEDIA.put(`audio/${st.lid}${st.file.ext}`, await raw.arrayBuffer(), { httpMetadata: { contentType: MIME_OF[st.file.ext] } });
+    await env.MEDIA.delete(`raw/${st.lid}${st.file.ext}`);
+    st.stage = 'publishing';
+    await setState(env, chat, st);
+    return finish(env, chat, st, st.lid);
+  }
   if (data.startsWith('pod:') && st.stage === 'pod') {
     st.pod = data.slice(4);
     st.seasons = (await loadSeasons(st.pod)).filter(Boolean);
@@ -141,25 +150,86 @@ async function press(env, chat, data) {
 const ilDate = d => new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Jerusalem', day: '2-digit', month: '2-digit', year: 'numeric' }).format(d);
 const pad = n => String(n).padStart(2, '0');
 
+const MIME_OF = { '.mp3': 'audio/mpeg', '.m4a': 'audio/x-m4a' };
+
+// starts the cleaning workflow on GitHub; it calls /cleaned when the cleaned file is in R2
+async function dispatchClean(env, lid, ext) {
+  const r = await fetch(`https://api.github.com/repos/${env.GITHUB_REPO}/actions/workflows/clean-audio.yml/dispatches`, {
+    method: 'POST',
+    headers: { authorization: `Bearer ${env.GITHUB_TOKEN.trim()}`, accept: 'application/vnd.github+json', 'user-agent': 'shiurim-bot' },
+    body: JSON.stringify({ ref: 'main', inputs: { lid, ext } }),
+  });
+  if (!r.ok) throw new Error(`workflow ${r.status}`);
+}
+
 async function publish(env, chat, st) {
   st.stage = 'publishing';
   await setState(env, chat, st);
-  await say(env, chat, 'מעלה את ההקלטה ומעדכן את הפיד והאתר, זה לוקח כחצי דקה...');
-  const site = SITE, media = env.MEDIA_URL;
-  const title = st.title.trim(), desc = st.desc.trim();
-  const lid = lessonId(title), ext = st.file.ext;
-  let step = 'הורדה מטלגרם';
+  await say(env, chat, 'מעלה את ההקלטה...');
+  const lid = lessonId(st.title.trim()), ext = st.file.ext;
+  let step = 'בדיקת השם';
   try {
-    // 1. the recording: Telegram -> R2
+    // a title that already exists would overwrite that lesson's recording
+    const cat = await new Repo(env).read(CATALOG_PATH);
+    const originals = parseCsv(cat.text).slice(1).map(r => r.fields[3]);
+    if (originals.some(o => lessonId(o) === lid)) {
+      st.stage = 'title';
+      await setState(env, chat, st);
+      return say(env, chat, 'כבר יש שיעור עם השם הזה. כתוב שם אחר להקלטה:');
+    }
+    step = 'הורדה מטלגרם';
     const info = await (await tg(env, 'getFile', { file_id: st.file.id })).json();
     if (!info.ok) throw new Error('getFile ' + JSON.stringify(info));
     const dl = await fetch(`https://api.telegram.org/file/bot${env.BOT_TOKEN.trim()}/${info.result.file_path}`);
     if (!dl.ok) throw new Error('download ' + dl.status);
+    const audio = await dl.arrayBuffer();
     step = 'העלאה לענן';
-    const stored = await env.MEDIA.put(`audio/${lid}${ext}`, await dl.arrayBuffer(), { httpMetadata: { contentType: MIME[ext] } });
+    // the original waits in raw/ while GitHub cleans it; if cleaning can't start, the original is published as it is
+    await env.MEDIA.put(`raw/${lid}${ext}`, audio, { httpMetadata: { contentType: MIME_OF[ext] } });
+    try {
+      await dispatchClean(env, lid, ext);
+    } catch (e) {
+      await env.MEDIA.put(`audio/${lid}${ext}`, audio, { httpMetadata: { contentType: MIME_OF[ext] } });
+      await env.MEDIA.delete(`raw/${lid}${ext}`);
+      await say(env, chat, `לא הצלחתי להפעיל את ניקוי הרעש (${e.message}), אז אני מפרסם את ההקלטה כמו שהיא.`);
+      return finish(env, chat, st, lid);
+    }
+    st.stage = 'cleaning'; st.lid = lid;
+    await setState(env, chat, st);
+    await say(env, chat, 'ההקלטה בענן. אני מנקה אותה מרעשים, וזה לוקח כמה דקות. אעדכן אותך כשהיא מפורסמת. לביטול כתוב /cancel');
+  } catch (e) {
+    st.stage = 'confirm';
+    await setState(env, chat, st);
+    await say(env, chat, `❌ התקלה בשלב „${step}”: ${String(e.message || e).slice(0, 300)}\nאפשר ללחוץ שוב על פרסום.`,
+      buttons([[['✅ פרסום', 'ok'], ['✖ ביטול', 'no']]]));
+  }
+}
 
-    // 2. the catalog decides the season number, the episode number and where the row goes
-    step = 'קריאת הקטלוג';
+// the cleaning workflow calls this when it is done
+async function cleaned(env, ctx, lid, ok) {
+  const chat = (env.OWNER_ID || '').trim();
+  const st = chat && await getState(env, chat);
+  if (!st || st.stage !== 'cleaning' || st.lid !== lid) return;
+  if (!ok) {
+    st.stage = 'cleanfailed';
+    await setState(env, chat, st);
+    return say(env, chat, '❌ ניקוי הרעש נכשל. לפרסם את ההקלטה המקורית כמו שהיא, או לבטל?',
+      buttons([[['פרסום ללא ניקוי', 'raw'], ['✖ ביטול', 'no']]]));
+  }
+  st.stage = 'publishing';
+  await setState(env, chat, st);
+  await finish(env, chat, st, lid);
+}
+
+// the recording is in audio/ in R2: add it to the catalog, the site and the feed
+async function finish(env, chat, st, lid) {
+  const site = SITE, media = env.MEDIA_URL;
+  const title = st.title.trim(), desc = st.desc.trim(), ext = st.file.ext;
+  let step = 'קריאת הקטלוג';
+  try {
+    const stored = await env.MEDIA.head(`audio/${lid}${ext}`);
+    if (!stored) throw new Error('ההקלטה לא נמצאה בענן');
+    // the catalog decides the season number, the episode number and where the row goes
     const repo = new Repo(env);
     const cat = await repo.read(CATALOG_PATH);
     const rows = parseCsv(cat.text), head = rows[0].fields, col = n => head.indexOf(n);
@@ -227,13 +297,12 @@ async function publish(env, chat, st) {
     await say(env, chat, await shareMessage(st.pod, title, desc, lid));
     await say(env, chat, 'את ההודעה שמעל מדביקים ככיתוב לתמונה. הקישור לאתר פותח את השיעור עצמו מיד. הקישורים לפלטפורמות פותחים את השיעור או את עמוד הפודקאסט, והם יעבדו במלואם כשהפלטפורמה תקלוט את השיעור, בדרך כלל תוך כמה שעות.');
   } catch (e) {
-    // before anything was committed the recording can simply be published again
-    const safe = ['הורדה מטלגרם', 'העלאה לענן', 'קריאת הקטלוג'].includes(step);
-    st.stage = safe ? 'confirm' : 'failed';
+    // nothing was committed before the catalog step, so publishing can simply be tried again
+    const safe = step === 'קריאת הקטלוג';
+    st.stage = safe ? 'cleaning' : 'failed'; st.lid = lid;
     await setState(env, chat, st);
     await say(env, chat, `❌ התקלה בשלב „${step}”: ${String(e.message || e).slice(0, 300)}` +
-      (safe ? '\nאפשר ללחוץ שוב על פרסום.' : '\nחלק מהעדכונים כבר נשמרו, אל תנסה שוב, ותגיד לי ואבדוק.'),
-      safe ? buttons([[['✅ פרסום', 'ok'], ['✖ ביטול', 'no']]]) : undefined);
+      (safe ? '\nההקלטה נשארת בענן. תגיד לי ואנסה שוב.' : '\nחלק מהעדכונים כבר נשמרו, אל תנסה שוב, ותגיד לי ואבדוק.'));
   }
 }
 
@@ -257,6 +326,14 @@ async function handle(env, msg) {
 
 export default {
   async fetch(req, env, ctx) {
+    const path = new URL(req.url).pathname;
+    if (req.method === 'POST' && path === '/cleaned') {
+      const want = (env.PIPELINE_KEY || '').trim();
+      if (!want || req.headers.get('x-pipeline-key') !== want) return new Response('Unauthorized', { status: 401 });
+      const { lid, ok } = await req.json();
+      ctx.waitUntil(cleaned(env, ctx, String(lid), !!ok));
+      return new Response('ok');
+    }
     if (req.method !== 'POST' || req.headers.get('x-telegram-bot-api-secret-token') !== (env.WEBHOOK_SECRET || '').trim())
       return new Response('ok');
     const update = await req.json();

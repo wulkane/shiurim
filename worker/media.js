@@ -65,9 +65,9 @@ const CORS = {
   'vary': 'origin',
 };
 
-function authorized(req, env) {
+function authorized(req, secret) {
   const given = (req.headers.get('authorization') || '').replace(/^Bearer /, '');
-  const want = (env.STATS_KEY || '').trim(); // a pasted secret may carry a trailing newline
+  const want = (secret || '').trim(); // a pasted secret may carry a trailing newline
   if (!want || given.length !== want.length) return false;
   let diff = 0;
   for (let i = 0; i < want.length; i++) diff |= given.charCodeAt(i) ^ want.charCodeAt(i);
@@ -76,7 +76,7 @@ function authorized(req, env) {
 
 async function stats(req, env, url) {
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
-  if (!authorized(req, env)) return new Response('Unauthorized', { status: 401, headers: CORS });
+  if (!authorized(req, env.STATS_KEY)) return new Response('Unauthorized', { status: 401, headers: CORS });
   const days = Math.min(+url.searchParams.get('days') || 0, 3650);
   const since = days ? new Date(Date.now() - days * 864e5).toISOString().slice(0, 10) : '0000-00-00';
   const headers = { ...CORS, 'cache-control': 'no-store' };
@@ -98,10 +98,27 @@ async function stats(req, env, url) {
   return Response.json({ byLesson: byLesson.results, byDay: byDay.results, imported: imported.results }, { headers });
 }
 
+// ---- upload and delete for the cleaning workflow (secret PIPELINE_KEY) ----
+const MIME = { '.mp3': 'audio/mpeg', '.m4a': 'audio/x-m4a' };
+
+async function admin(req, env, url) {
+  if (!authorized(req, env.PIPELINE_KEY)) return new Response('Unauthorized', { status: 401 });
+  const key = decodeURIComponent(url.pathname.slice('/admin/'.length));
+  const m = /^(audio|raw)\/l[0-9a-z]+(\.mp3|\.m4a)$/.exec(key);
+  if (!m) return new Response('Bad key', { status: 400 });
+  if (req.method === 'PUT') {
+    const put = await env.MEDIA.put(key, await req.arrayBuffer(), { httpMetadata: { contentType: MIME[m[2]] } });
+    return Response.json({ key, size: put.size });
+  }
+  if (req.method === 'DELETE') { await env.MEDIA.delete(key); return Response.json({ key, deleted: true }); }
+  return new Response('Method not allowed', { status: 405 });
+}
+
 export default {
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
     if (url.pathname.startsWith('/stats/')) return stats(req, env, url);
+    if (url.pathname.startsWith('/admin/')) return admin(req, env, url);
 
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       return new Response('Method not allowed', { status: 405, headers: { allow: 'GET, HEAD' } });

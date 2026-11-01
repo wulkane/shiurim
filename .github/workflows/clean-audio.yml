@@ -1,0 +1,53 @@
+# Cleans a new recording (gentle noise reduction, even loudness) between the Telegram bot and the feed.
+# The bot stores the original as raw/<id> in R2 and starts this workflow; it puts the cleaned file
+# in audio/<id> and tells the bot to finish publishing. Same filter as scripts/denoise_audio.py.
+name: Clean audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      lid:
+        description: lesson id
+        required: true
+      ext:
+        description: file extension (.m4a or .mp3)
+        required: true
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      MEDIA: https://shiurim-media.wulkane.workers.dev
+      BOT: https://shiurim-bot.wulkane.workers.dev
+      KEY: ${{ secrets.PIPELINE_KEY }}
+      LID: ${{ inputs.lid }}
+      EXT: ${{ inputs.ext }}
+    steps:
+      - name: Check the inputs
+        run: |
+          [[ "$LID" =~ ^l[0-9a-z]+$ ]] && [[ "$EXT" =~ ^\.(m4a|mp3)$ ]]
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Download the original
+        run: curl -fsS "$MEDIA/raw/$LID$EXT" -o "original$EXT"
+      - name: Clean
+        run: |
+          if [ "$EXT" = ".mp3" ]; then CODEC=libmp3lame; else CODEC=aac; fi
+          ffmpeg -hide_banner -loglevel error -i "original$EXT" \
+            -af "highpass=f=80,afftdn=nr=10:nf=-40:tn=1,loudnorm=I=-16:TP=-1.5:LRA=11" \
+            -c:a $CODEC -b:a 128k "cleaned$EXT"
+      - name: Upload the cleaned file
+        run: |
+          curl -fsS -X PUT -H "Authorization: Bearer $KEY" --data-binary "@cleaned$EXT" "$MEDIA/admin/audio/$LID$EXT"
+      - name: Delete the original copy
+        run: curl -fsS -X DELETE -H "Authorization: Bearer $KEY" "$MEDIA/admin/raw/$LID$EXT"
+      - name: Tell the bot
+        run: |
+          curl -fsS -X POST -H "x-pipeline-key: $KEY" -H "content-type: application/json" \
+            -d "{\"lid\":\"$LID\",\"ok\":true}" "$BOT/cleaned"
+      - name: Tell the bot it failed
+        if: failure()
+        run: |
+          curl -sS -X POST -H "x-pipeline-key: $KEY" -H "content-type: application/json" \
+            -d "{\"lid\":\"$LID\",\"ok\":false}" "$BOT/cleaned" || true
