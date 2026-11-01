@@ -640,7 +640,7 @@ window.DATA = [
   ],
   "links": {
    "spotify": "https://open.spotify.com/show/4A5zOZawW3O0bZux3pJgY6",
-   "youtube": null,
+   "youtube": "https://www.youtube.com/playlist?list=PLb3WLqCAf4ow",
    "pocketcasts": "https://pca.st/kf6bl5wi",
    "rss": "https://wulkane.github.io/shiurim/feeds/moadim.xml"
   },
