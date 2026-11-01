@@ -292,7 +292,7 @@ async function finish(env, chat, st, lid) {
     await setState(env, chat, null);
     await say(env, chat, '✅ פורסם! ההקלטה בענן, בפיד ובאתר. אפליקציות הפודקאסטים יקלטו אותה בדרך כלל תוך דקות עד כמה שעות, והאתר יתעדכן בתוך דקה או שתיים.');
     const card = `${site}status.html?title=${encodeURIComponent(title)}&pod=${encodeURIComponent(podName)}&desc=${encodeURIComponent(desc)}`;
-    await say(env, chat, 'התמונה לסטטוס מוכנה. בדף שייפתח לוחצים „שיתוף לוואטסאפ” ובוחרים סטטוס:',
+    await say(env, chat, 'התמונה לסטטוס מוכנה. בדף שייפתח לוחצים „שיתוף לוואטסאפ”. אם וואטסאפ לא מופיע ברשימה, לוחצים „הורדת תמונה”, ואז בוואטסאפ: סטטוס ← הוספה מהגלריה, ומדביקים את ההודעה שבאה אחרי זה ככיתוב:',
       { inline_keyboard: [[{ text: 'פתיחת התמונה לסטטוס', url: card }]] });
     await say(env, chat, await shareMessage(st.pod, title, desc, lid));
     await say(env, chat, 'את ההודעה שמעל מדביקים ככיתוב לתמונה. הקישור לאתר פותח את השיעור עצמו מיד. הקישורים לפלטפורמות פותחים את השיעור או את עמוד הפודקאסט, והם יעבדו במלואם כשהפלטפורמה תקלוט את השיעור, בדרך כלל תוך כמה שעות.');
