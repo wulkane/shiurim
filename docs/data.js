@@ -612,6 +612,14 @@ window.DATA = [
       "date": "22/10/2026",
       "dur": "00:16:28",
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/l683444.m4a"
+     },
+     {
+      "id": "lbc718d",
+      "title": "תפילה (2)- מבנה ומהלך תפילת העמידה",
+      "desc": "התבוננות במהלך ובמגמת תפילת העמידה- בבקשת הגאולה על עם ישראל",
+      "date": "01/11/2026",
+      "dur": "00:19:37",
+      "audio": "https://shiurim-media.wulkane.workers.dev/audio/lbc718d.m4a"
      }
     ]
    }
