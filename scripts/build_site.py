@@ -11,6 +11,7 @@ from common import ROOT, PODCASTS, audio_info, lesson_id, load_catalog, load_con
 
 OUT = ROOT / 'docs' / 'data.js'
 OLD_FEED = 'https://anchor.fm/s/1080dfd28/podcast/rss'
+EPISODE_LINKS = ROOT / 'data' / 'episode_links.json'   # optional: {lesson id: {platform: link to that lesson}}
 
 # Intro for a season whose lessons don't share one blurb (new series, written once here).
 SEASON_ABOUT = {
@@ -23,6 +24,7 @@ def main():
     live = 'EXAMPLE' not in cfg['media_url'] + cfg['site_url']
     media, site = cfg['media_url'].rstrip('/') + '/', cfg['site_url'].rstrip('/') + '/'
     rows = load_catalog()
+    episode_links = json.loads(EPISODE_LINKS.read_text(encoding='utf-8')) if EPISODE_LINKS.exists() else {}
     pods = {}
     for p in PODCASTS:
         rss = f'{site}feeds/{p["key"]}.xml' if live else (OLD_FEED if p['key'] == 'emuna' else None)
@@ -37,6 +39,7 @@ def main():
             'id': lid, 'title': r['כותרת חדשה'].strip(), 'desc': r['תיאור'].strip(),
             'date': r['תאריך'], 'dur': r['אורך'],
             'audio': f'{media}audio/{lid}{info[0]}' if live and info else r['קישור לקובץ'],
+            **({'links': episode_links[lid]} if lid in episode_links else {}),
         })
     # A series repeats its description on every lesson: show it once on the season.
     for pod in pods.values():

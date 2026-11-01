@@ -56,11 +56,23 @@ function parseDuration(text) {
   return p.length === 1 ? p[0] * 60 : p.reduce((s, v) => s * 60 + v, 0);
 }
 
-async function loadSeasons(podKey) {
+const PLATFORMS = [['spotify', 'ספוטיפיי'], ['apple', 'אפל פודקאסטס'], ['youtube', 'יוטיוב'], ['pocketcasts', 'Pocket Casts']];
+
+async function loadPod(podKey) {
   const r = await fetch(SITE + 'data.js', { cf: { cacheTtl: 0 } });
   const data = JSON.parse((await r.text()).replace(/^window\.DATA = /, '').replace(/;\s*$/, ''));
-  const pod = data.find(p => p.name === PODCASTS[podKey]);
-  return [...new Set(pod.seasons.map(s => s.name))];
+  return data.find(p => p.name === PODCASTS[podKey]);
+}
+
+async function loadSeasons(podKey) {
+  return [...new Set((await loadPod(podKey)).seasons.map(s => s.name))];
+}
+
+// the message to copy for a WhatsApp status or group: the lesson page and every platform that has the podcast
+async function shareMessage(podKey, title, desc, lid) {
+  const links = (await loadPod(podKey)).links;
+  return [`🎧 שיעור חדש: ${title}`, desc, '', `האזנה באתר: ${SITE}#${lid}`,
+    ...PLATFORMS.filter(([k]) => links[k]).map(([k, label]) => `${label}: ${links[k]}`)].join('\n');
 }
 
 async function confirmation(env, chat, st) {
@@ -209,7 +221,8 @@ async function publish(env, chat, st) {
 
     await setState(env, chat, null);
     await say(env, chat, '✅ פורסם! ההקלטה בענן, בפיד ובאתר. אפליקציות הפודקאסטים יקלטו אותה בדרך כלל תוך דקות עד כמה שעות, והאתר יתעדכן בתוך דקה או שתיים.');
-    await say(env, chat, `🎧 שיעור חדש: ${title}\n${desc}\n${site}#${lid}`);
+    await say(env, chat, await shareMessage(st.pod, title, desc, lid));
+    await say(env, chat, 'זו ההודעה לסטטוס או לקבוצה. הקישור לאתר פותח את השיעור עצמו מיד. הקישורים לפלטפורמות פותחים את עמוד הפודקאסט, והשיעור יופיע שם תוך דקות עד כמה שעות.');
   } catch (e) {
     // before anything was committed the recording can simply be published again
     const safe = ['הורדה מטלגרם', 'העלאה לענן', 'קריאת הקטלוג'].includes(step);
