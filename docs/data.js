@@ -371,7 +371,7 @@ window.DATA = [
   "links": {
    "spotify": "https://podcasters.spotify.com/pod/show/-25869",
    "youtube": null,
-   "pocketcasts": null,
+   "pocketcasts": "https://pca.st/rjy0k8x7",
    "rss": "https://wulkane.github.io/shiurim/feeds/emuna.xml"
   },
   "seasons": [

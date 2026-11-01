@@ -18,7 +18,7 @@ PODCASTS = [
     {
         'name': 'אמת ואמונה', 'key': 'emuna', 'icon': 1,
         'about': 'עיונים ומחשבות על נושאי יסוד באמונה היהודית',
-        'links': {'spotify': 'https://podcasters.spotify.com/pod/show/-25869', 'youtube': None, 'pocketcasts': None},
+        'links': {'spotify': 'https://podcasters.spotify.com/pod/show/-25869', 'youtube': None, 'pocketcasts': 'https://pca.st/rjy0k8x7'},
     },
     {
         'name': 'מועדי ישראל', 'key': 'moadim', 'icon': 2,
