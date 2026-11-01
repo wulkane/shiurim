@@ -275,8 +275,9 @@ document.addEventListener('click', async e => {
   const p = e.target.closest('[data-play]'); if (p) return play(p.dataset.play);
   const s = e.target.closest('[data-share]');
   if (s) {
-    const l = lessons[s.dataset.share], url = location.href.split('#')[0] + '#' + l.id;
-    if (navigator.share) { try { await navigator.share({title: l.title, text: `${l.title} · שיעורי תורה, אלעד וולקן`, url}); } catch(e){} }
+    // the lesson's own page: a chat preview reads the lesson's name and sentence from it, then it opens the lesson here
+    const l = lessons[s.dataset.share], url = new URL('l/' + l.id, location.href).href;
+    if (navigator.share) { try { await navigator.share({title: l.title, text: l.title, url}); } catch(e){} }
     else copy(url, 'הקישור לשיעור הועתק');
     return;
   }
