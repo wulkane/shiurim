@@ -370,7 +370,7 @@ window.DATA = [
   "about": "עיונים ומחשבות על נושאי יסוד באמונה היהודית",
   "links": {
    "spotify": "https://open.spotify.com/show/7gt623zWPQ6gs9nmfVh3KJ",
-   "youtube": null,
+   "youtube": "https://www.youtube.com/playlist?list=PLSTYvhvxkAIk",
    "pocketcasts": "https://pca.st/rjy0k8x7",
    "rss": "https://wulkane.github.io/shiurim/feeds/emuna.xml"
   },
