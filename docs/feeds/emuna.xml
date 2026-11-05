@@ -21,6 +21,20 @@
     <itunes:type>episodic</itunes:type>
     <podcast:locked>no</podcast:locked>
     <item>
+      <title><![CDATA[תפילה (3)- כוונת הלב]]></title>
+      <description><![CDATA[התבוננות בכוונת הלב הנדרשת בתפילה ובמספר דרכים המובילות אליה]]></description>
+      <link>https://wulkane.github.io/shiurim/#l8f6851</link>
+      <guid isPermaLink="false">shiurim-l8f6851</guid>
+      <pubDate>Thu, 05 Nov 2026 21:28:00 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l8f6851.m4a" length="19630269" type="audio/x-m4a"/>
+      <itunes:duration>1176</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="תפילה">5</podcast:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
       <title><![CDATA[תפילה (2)- מבנה ומהלך תפילת העמידה]]></title>
       <description><![CDATA[התבוננות במהלך ובמגמת תפילת העמידה- בבקשת הגאולה על עם ישראל]]></description>
       <link>https://wulkane.github.io/shiurim/#lbc718d</link>
