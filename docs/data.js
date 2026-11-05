@@ -884,6 +884,14 @@ window.DATA = [
        "pocketcasts": "https://pca.st/episode/f0e5e5be-b61c-41bc-a00a-c2a4b4b97920",
        "youtube": "https://www.youtube.com/watch?v=3E0ANb-gvHk&list=PLSTYvhvxkAIk"
       }
+     },
+     {
+      "id": "l8f6851",
+      "title": "תפילה (3)- כוונת הלב",
+      "desc": "התבוננות בכוונת הלב הנדרשת בתפילה ובמספר דרכים המובילות אליה",
+      "date": "05/11/2026",
+      "dur": "00:19:36",
+      "audio": "https://shiurim-media.wulkane.workers.dev/audio/l8f6851.m4a"
      }
     ]
    }
