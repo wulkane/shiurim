@@ -892,6 +892,14 @@ window.DATA = [
       "date": "05/11/2026",
       "dur": "00:19:36",
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/l8f6851.m4a"
+     },
+     {
+      "id": "lef1bbd",
+      "title": "תפילה (4)- השפעת התפילה",
+      "desc": "עיון בתפיסות השונות לאורך הדורות על השפעת התפילה, הקשר לתפיסת המציאות בכל תקופה והכיוון הכללי בדורותינו",
+      "date": "12/11/2026",
+      "dur": "00:19:07",
+      "audio": "https://shiurim-media.wulkane.workers.dev/audio/lef1bbd.m4a"
      }
     ]
    }
