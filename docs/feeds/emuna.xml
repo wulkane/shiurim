@@ -21,6 +21,20 @@
     <itunes:type>episodic</itunes:type>
     <podcast:locked>no</podcast:locked>
     <item>
+      <title><![CDATA[תפילה (4)- השפעת התפילה]]></title>
+      <description><![CDATA[עיון בתפיסות השונות לאורך הדורות על השפעת התפילה, הקשר לתפיסת המציאות בכל תקופה והכיוון הכללי בדורותינו]]></description>
+      <link>https://wulkane.github.io/shiurim/#lef1bbd</link>
+      <guid isPermaLink="false">shiurim-lef1bbd</guid>
+      <pubDate>Thu, 12 Nov 2026 19:14:00 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/lef1bbd.m4a" length="19248179" type="audio/x-m4a"/>
+      <itunes:duration>1147</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>5</itunes:season>
+      <podcast:season name="תפילה">5</podcast:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
       <title><![CDATA[תפילה (3)- כוונת הלב]]></title>
       <description><![CDATA[התבוננות בכוונת הלב הנדרשת בתפילה ובמספר דרכים המובילות אליה]]></description>
       <link>https://wulkane.github.io/shiurim/#l8f6851</link>
