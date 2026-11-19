@@ -902,6 +902,20 @@ window.DATA = [
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/lef1bbd.m4a"
      }
     ]
+   },
+   {
+    "name": "לימוד תורה",
+    "about": "",
+    "lessons": [
+     {
+      "id": "le8f17f",
+      "title": "לימוד תורה (1)- מקור המצווה ותקופת התנ\"ך",
+      "desc": "עיון במקור מצוות תלמוד תורה ובמקומה בתקופת התנ\"ך",
+      "date": "19/11/2026",
+      "dur": "00:13:40",
+      "audio": "https://shiurim-media.wulkane.workers.dev/audio/le8f17f.m4a"
+     }
+    ]
    }
   ]
  },
