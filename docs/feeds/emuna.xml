@@ -21,6 +21,20 @@
     <itunes:type>episodic</itunes:type>
     <podcast:locked>no</podcast:locked>
     <item>
+      <title><![CDATA[לימוד תורה (1)- מקור המצווה ותקופת התנ"ך]]></title>
+      <description><![CDATA[עיון במקור מצוות תלמוד תורה ובמקומה בתקופת התנ"ך]]></description>
+      <link>https://wulkane.github.io/shiurim/#le8f17f</link>
+      <guid isPermaLink="false">shiurim-le8f17f</guid>
+      <pubDate>Thu, 19 Nov 2026 19:12:00 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/le8f17f.m4a" length="13710186" type="audio/x-m4a"/>
+      <itunes:duration>820</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>6</itunes:season>
+      <podcast:season name="לימוד תורה">6</podcast:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
       <title><![CDATA[תפילה (4)- השפעת התפילה]]></title>
       <description><![CDATA[עיון בתפיסות השונות לאורך הדורות על השפעת התפילה, הקשר לתפיסת המציאות בכל תקופה והכיוון הכללי בדורותינו]]></description>
       <link>https://wulkane.github.io/shiurim/#lef1bbd</link>
