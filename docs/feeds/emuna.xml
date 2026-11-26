@@ -21,6 +21,20 @@
     <itunes:type>episodic</itunes:type>
     <podcast:locked>no</podcast:locked>
     <item>
+      <title><![CDATA[לימוד תורה (2)- המהפכה בתקופת חז"ל]]></title>
+      <description><![CDATA[התבוננות בשינוי במעמדו של לימוד התורה החל מתקופת שיבת ציון ולאורך תקופת חז"ל, תוך עמידה על הסיבות והמשמעויות לדבר]]></description>
+      <link>https://wulkane.github.io/shiurim/#l5802e5</link>
+      <guid isPermaLink="false">shiurim-l5802e5</guid>
+      <pubDate>Thu, 26 Nov 2026 19:44:00 GMT</pubDate>
+      <enclosure url="https://shiurim-media.wulkane.workers.dev/audio/l5802e5.m4a" length="17693998" type="audio/x-m4a"/>
+      <itunes:duration>1051</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>6</itunes:season>
+      <podcast:season name="לימוד תורה">6</podcast:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
       <title><![CDATA[לימוד תורה (1)- מקור המצווה ותקופת התנ"ך]]></title>
       <description><![CDATA[עיון במקור מצוות תלמוד תורה ובמקומה בתקופת התנ"ך]]></description>
       <link>https://wulkane.github.io/shiurim/#le8f17f</link>
