@@ -914,6 +914,14 @@ window.DATA = [
       "date": "19/11/2026",
       "dur": "00:13:40",
       "audio": "https://shiurim-media.wulkane.workers.dev/audio/le8f17f.m4a"
+     },
+     {
+      "id": "l5802e5",
+      "title": "לימוד תורה (2)- המהפכה בתקופת חז\"ל",
+      "desc": "התבוננות בשינוי במעמדו של לימוד התורה החל מתקופת שיבת ציון ולאורך תקופת חז\"ל, תוך עמידה על הסיבות והמשמעויות לדבר",
+      "date": "26/11/2026",
+      "dur": "00:17:31",
+      "audio": "https://shiurim-media.wulkane.workers.dev/audio/l5802e5.m4a"
      }
     ]
    }
